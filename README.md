@@ -34,6 +34,8 @@ $$
 \tag{1}\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =\bold{I}  \frac{d}{dt} \overrightarrow\omega^{disk} = \bold{I}  \dot{\overrightarrow{\omega}}{^{disk}_{}}
 $$
 
+## above has tags below no tag
+
 $$
 \overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =\bold{I}  \frac{d}{dt} \overrightarrow\omega^{disk} = \bold{I}  \dot{\overrightarrow{\omega}}{^{disk}_{}}
 $$
