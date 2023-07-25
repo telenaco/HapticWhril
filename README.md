@@ -1,18 +1,18 @@
-# HapticWhirl - Solving the forward and inverse kinematics
+# HapticWhirl - Solving the Forward and Inverse Kinematics
 
 Created: June 18, 2021 10:30 AM
 
-If you are new to gyroscopes have a look at the following video to get your head around of the output torques from a gyroscope. 
+If you are new to gyroscopes have a look at the following video to get your head around of the output torques from a gyroscope.
 
-[https://youtu.be/jQEKhIovKA0](https://youtu.be/jQEKhIovKA0)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jQEKhIovKA0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-For a bit more in depth mathematical aproach check out the video series 
+For a bit more in depth mathematical approach check out the video series 
 
-[https://www.youtube.com/watch?v=bYF0PGsF92k](https://www.youtube.com/watch?v=bYF0PGsF92k)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bYF0PGsF92k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Finally any other detail that are cover in this tutorial is explained in more detail in the class notes for the [aeronautics-and-astronautics MIT course](https://ocw.mit.edu/courses/aeronautics-and-astronautics/16-07-dynamics-fall-2009/lecture-notes/), see lectures 26 onwards. 
+Finally, any other details that are covered in this tutorial are explained in more detail in the class notes for the [aeronautics-and-astronautics MIT course](https://ocw.mit.edu/courses/aeronautics-and-astronautics/16-07-dynamics-fall-2009/lecture-notes/), see lectures 26 onwards.
 
-## Gyro VR Controller Modelling
+## HapticWhirl Modelling
 
 There are two moments created by the actuation of the flywheel and the gimbal that create torque.
 
@@ -27,6 +27,8 @@ The momentum of the flywheel is perpendicular to the rotation plane of the flywh
 $$
 \tag{1}\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =\bold{I}  \frac{d}{dt} \overrightarrow\omega^{disk} = \bold{I}  \dot{\overrightarrow{\omega}}{^{disk}_{}}
 $$
+
+This equation states that the torque output is equal to the moment of inertia of the flywheel multiplied by the time derivative of its angular velocity.
 
 This equation states that the torque output is equal to the moment of inertia of the flywheel multiplied by the time derivative of its angular velocity.
 
