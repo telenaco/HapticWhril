@@ -34,6 +34,10 @@ $$
 \tag{1}\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =\bold{I}  \frac{d}{dt} \overrightarrow\omega^{disk} = \bold{I}  \dot{\overrightarrow{\omega}}{^{disk}_{}}
 $$
 
+$$
+\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =\bold{I}  \frac{d}{dt} \overrightarrow\omega^{disk} = \bold{I}  \dot{\overrightarrow{\omega}}{^{disk}_{}}
+$$
+
 This equation indicates that the torque output is the product of the flywheel's moment of inertia and the rate of change of its angular velocity.
 
 
