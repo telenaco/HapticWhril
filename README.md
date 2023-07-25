@@ -1,32 +1,41 @@
 # HapticWhirl - Solving the Forward and Inverse Kinematics
 
-If you are new to gyroscopes have a look at the following video to get your head around of the output torques from a gyroscope.
+Created: June 18, 2021 10:30 AM
 
+If you are new to gyroscopes, this video will help you understand the output torques from a gyroscope.
+
+<p align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/jQEKhIovKA0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
 
-For a bit more in depth mathematical approach check out the video series 
+For a more in-depth mathematical approach, check out this video series:
 
+<p align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bYF0PGsF92k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
 
-Finally, any other details that are covered in this tutorial are explained in more detail in the class notes for the [aeronautics-and-astronautics MIT course](https://ocw.mit.edu/courses/aeronautics-and-astronautics/16-07-dynamics-fall-2009/lecture-notes/), see lectures 26 onwards.
+Further details that are covered in this tutorial are explained more comprehensively in the class notes for the [aeronautics-and-astronautics MIT course](https://ocw.mit.edu/courses/aeronautics-and-astronautics/16-07-dynamics-fall-2009/lecture-notes/), particularly from lectures 26 onwards.
 
 ## HapticWhirl Modelling
 
-There are two moments created by the actuation of the flywheel and the gimbal that create torque.
+The actuation of the flywheel and the gimbal creates two moments that result in torque.
 
 ### Momentum Wheel
 
-![(a) Momentum wheel](HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled.png)
+<p align="center">
+<img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled.png" width="560">
+</p>
 
 (a) Momentum wheel
 
-The momentum of the flywheel is perpendicular to the rotation plane of the flywheel. The torque output is given by:
+The momentum of the flywheel is perpendicular to the rotation plane of the flywheel. The torque output can be determined using the following equation:
 
 $$
 \tag{1}\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =\bold{I}  \frac{d}{dt} \overrightarrow\omega^{disk} = \bold{I}  \dot{\overrightarrow{\omega}}{^{disk}_{}}
 $$
 
-This equation states that the torque output is equal to the moment of inertia of the flywheel multiplied by the time derivative of its angular velocity.
+This equation indicates that the torque output is the product of the flywheel's moment of inertia and the rate of change of its angular velocity.
+
 
 ## Need to edit from here forward 
 
