@@ -1,0 +1,5 @@
+mathjax:
+  enabled: true
+  config:
+    tex:
+      preamble: "\\usepackage{amsmath}"

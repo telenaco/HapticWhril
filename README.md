@@ -1,6 +1,5 @@
 # HapticWhirl - Solving the Forward and Inverse Kinematics
 
-Created: June 18, 2021 10:30 AM
 
 If you are new to gyroscopes, this video will help you understand the output torques from a gyroscope.
 
