@@ -1,5 +1,4 @@
-<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>[^1^][1]
-
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 # HapticWhirl - Solving the Forward and Inverse Kinematics
 
@@ -33,17 +32,8 @@ The actuation of the flywheel and the gimbal creates two moments that result in 
 The momentum of the flywheel is perpendicular to the rotation plane of the flywheel. The torque output can be determined using the following equation:
 
 $$
-\tag{1}\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =\bold{I}  \frac{d}{dt} \overrightarrow\omega^{disk} = \bold{I}  \dot{\overrightarrow{\omega}}{^{disk}_{}}
+\tag{1}\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =\mathbf{I}  \frac{d}{dt} \overrightarrow\omega^{disk} = \mathbf{I}  \dot{\overrightarrow{\omega}}{^{disk}_{}}
 $$
-
-## above has tags below no tag
-
-$$
-\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =\bold{I}  \frac{d}{dt} \overrightarrow\omega^{disk} = \bold{I}  \dot{\overrightarrow{\omega}}{^{disk}_{}}
-$$
-
-
-$ e = mc^2 $
 
 This equation indicates that the torque output is the product of the flywheel's moment of inertia and the rate of change of its angular velocity.
 
