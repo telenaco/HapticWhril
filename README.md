@@ -1,7 +1,5 @@
 # HapticWhirl - Solving the Forward and Inverse Kinematics
 
-Created: June 18, 2021 10:30 AM
-
 If you are new to gyroscopes have a look at the following video to get your head around of the output torques from a gyroscope.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/jQEKhIovKA0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -30,7 +28,7 @@ $$
 
 This equation states that the torque output is equal to the moment of inertia of the flywheel multiplied by the time derivative of its angular velocity.
 
-This equation states that the torque output is equal to the moment of inertia of the flywheel multiplied by the time derivative of its angular velocity.
+## Need to edit from here forward 
 
 ### Steered Momentum Wheel
 
