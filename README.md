@@ -49,7 +49,7 @@ This equation indicates that the torque output is the product of the flywheel's 
 The steered momentum wheel refers to the output momentum generated when the gimbal axis is also actuated. 
 
 $$
-\tag{2}\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =  \overrightarrow\omega^{gimbal} \times \bold{I} \overrightarrow\omega^{disk} 
+\tag{2}\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =  \overrightarrow\omega^{gimbal} \times \mathbf{I} \overrightarrow\omega^{disk} 
 $$
 
 The combination of equations 1. and 2. describes the momentum caused by the disk in its frame of reference (A), considering both the angular acceleration of the disk and the cross product of the gimbal's angular velocity with the disk's angular momentum. 
@@ -113,10 +113,9 @@ $$
 \end{pmatrix} + 
 (R_{B \rightarrow A} \ \cdot \overrightarrow{\omega}{^{inner}_{B}}) +
 (R_{C \rightarrow A} \ \cdot \overrightarrow{\omega}{^{outer}_{C}})  
-
 $$
 
-Disk and inner gimbal share the same coordinate frame hence  $A = B$ .  Hence the rotation matrix $R_{B \rightarrow A}$ is an identity matrix. The rotation matrix $R_{C\rightarrow A}$  rotates over the Y-axis. 
+Disk and inner gimbal share the same coordinate frame hence  $A = B$.  Hence the rotation matrix $R_{B \rightarrow A}$ is an identity matrix. The rotation matrix $R_{C\rightarrow A}$  rotates over the Y-axis. 
 
 ![HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%202.png](HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%202.png)
 
@@ -144,16 +143,16 @@ $$
 
 Disk Inertia Torque Matrix ($I$)
 
-The moment component $\bold{I}$ refers to the Inertial tensor, representing the moment of inertia about the different axes :
+The moment component $\mathbf{I}$ refers to the Inertial tensor, representing the moment of inertia about the different axes :
 
 $$
-\bold{I} = \begin{bmatrix}I_{xx}&I_{xy}&I_{xz}\\I_{yx}&I_{yy}&I_{yz}\\I_{zx}&I_{zy}&I_{zz}\end{bmatrix}
+\mathbf{I} = \begin{bmatrix}I_{xx}&I_{xy}&I_{xz}\\I_{yx}&I_{yy}&I_{yz}\\I_{zx}&I_{zy}&I_{zz}\end{bmatrix}
 $$
 
 However, for a disk this can be simplified to a [diagonal matrix](https://en.wikipedia.org/wiki/List_of_moments_of_inertia). 
 
 $$
-\bold{I}=\begin{pmatrix}I_{xx}&0&0\\0&I_{yy}&0\\0&0&I_{zz}\end{pmatrix}
+\mathbf{I}=\begin{pmatrix}I_{xx}&0&0\\0&I_{yy}&0\\0&0&I_{zz}\end{pmatrix}
 $$
 
 ![HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/unnamed.gif](HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/unnamed.gif)
@@ -163,7 +162,7 @@ We can replace $I_{xx}, I_{yy}\ \ and\ \ I_{zz}$ with the disk moment of inertia
 hence $I$ becomes:
 
 $$
-\tag{5} \bold{I}=\begin{pmatrix}\frac{1}{4}MR^2&0&0\\0&\frac{1}{4}MR^2&0\\0&0&\frac{1}{2}MR^2\\\end{pmatrix}
+\tag{5} \mathbf{I}=\begin{pmatrix}\frac{1}{4}MR^2&0&0\\0&\frac{1}{4}MR^2&0\\0&0&\frac{1}{2}MR^2\\\end{pmatrix}
 $$
 
 ## Angular Velocity Gimbal($\overrightarrow{\omega}{^{Gimbal}_{A}}$)
