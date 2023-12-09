@@ -30,7 +30,7 @@ Further details that are covered in this tutorial are explained more comprehensi
 
 ## HapticWhirl Modelling
 
-The actuation of the flywheel and the gimbal creates two moments that result in torque.
+The HapticWhirl device operates through the actuation of a flywheel and a gimbal, each contributing to the generation of torque.
 
 ### Momentum Wheel
 
@@ -40,13 +40,13 @@ The actuation of the flywheel and the gimbal creates two moments that result in 
     <em>(a) Momentum Wheel</em>
 </p>
 
-The momentum of the flywheel is perpendicular to the rotation plane of the flywheel. The torque output can be determined using the following equation:
+The flywheel's momentum, which is the force that keeps it rotating, always acts perpendicular to its rotation plane. The torque, or the rotational force exerted by the flywheel, can be calculated with this equation:
 
 $$
 \tag{1}\overrightarrow{\tau} = \frac{d\overrightarrow{L}}{dt} = \mathbf{I} \frac{d}{dt}\overrightarrow{\omega}^{\text{disk}} = \mathbf{I} \dot{\overrightarrow{\omega}}^{\text{disk}}
 $$
 
-This equation indicates that the torque output is the product of the flywheel's moment of inertia and the rate of change of its angular velocity.
+This formula shows that the torque is a result of multiplying the flywheel's moment of inertia (resistance to changes in its rotation) by the rate at which its angular velocity changes.
 
 ### Steered Momentum Wheel
 
@@ -56,13 +56,13 @@ This equation indicates that the torque output is the product of the flywheel's 
     <em>(b) Steered Momentum Wheel</em>
 </p>
 
-The steered momentum wheel refers to the output momentum generated when the gimbal axis is also actuated. 
+The steered momentum wheel concept refers to the additional momentum generated when both the disk and the gimbal are moving. This is described by the equation:
 
 $$
 \tag{2}\overrightarrow{\tau}= \frac{d \overrightarrow{L}}{dt} =  \overrightarrow{\omega}^{gimbal} \times \mathbf{I} \overrightarrow{\omega}^{disk}
 $$
 
-The combination of equations 1. and 2. describes the momentum caused by the disk in its frame of reference (A), considering both the angular acceleration of the disk and the cross product of the gimbal's angular velocity with the disk's angular momentum. 
+This can be combine on the follwoing equation with s the effects of the disk’s angular acceleration and the interaction (cross product) of the gimbal's angular velocity with the disk's angular momentum, detailing the overall momentum in the system’s frame of reference (A).
 
 $$
 \tag{3} \overrightarrow{\mathbf{M}}^{gyro}_A =
@@ -265,9 +265,7 @@ $$
 We can combine the members of the equation by  grouping the different equations to solve in three steps:
 
 <p align="center">
-    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%204.png" width="300" alt="Diagram showing the groupings of gyroscopic torque equations with labeled components for clearer step-by-step calculation in the HapticWhirl project.">
-    <br>
-    <em>Figure: Gyroscopic torque equation groupings in the HapticWhirl project</em>
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%204.png" width="400" alt="Diagram showing the groupings of gyroscopic torque equations with labeled components for clearer step-by-step calculation in the HapticWhirl project.">
 </p>
 
 First we replace the diagonal values in $$I$$  with $$I_x , I_y \text{ and } I_z$$ , where $$I_x = I_y$$ . 
@@ -313,14 +311,6 @@ $$
 $$
 
 $$
-\begin{vmatrix}
-i & j & k \\
--\dot\psi \sin \theta & \dot\theta & \dot\psi \cos \theta \\
-\mathbf{I_x}(-\dot\psi \sin \theta) & \mathbf{I_x}\dot\theta & \mathbf{I_z}(\dot\rho + \dot\psi \cos \theta)
-\end{vmatrix} =
-$$
-
-$$
 \begin{pmatrix}i&j&k\\ -\dot\psi \sin \theta &\dot\theta &\dot\psi \cos \theta \\ {\bf{I_x}}\left(-\dot\psi \sin \theta \right)&{\bf{I_{x}}}\dot\theta &{\bf{I_z}}\left(\dot\rho +\dot\psi \cos \theta \right)\end{pmatrix}=
 $$
 
@@ -330,10 +320,6 @@ $$
 (\dot\psi \cos \theta)(-\mathbf{I_x} \dot\psi \sin \theta) - (\mathbf{I_z}(\dot\rho + \dot\psi \cos \theta)(-\dot\psi \sin \theta)) \\
 -\dot\psi \sin \theta \mathbf{I_x} \dot\theta - \mathbf{I_x}(-\dot\psi \sin \theta) \dot\theta
 \end{pmatrix}
-$$
-
-$$
-  \begin{pmatrix}            \dot\theta{\bf{I_z}}(\dot\rho+\dot\psi\cos\theta)                           & - & \dot\theta{\bf{I_x}}\dot\psi\cos\theta \\        (\dot\psi  \cos \theta ) (-{\bf{I_x}} \dot\psi  \sin \theta )             & - &  ({\bf{I_z}} (\dot\rho +\dot\psi  \cos \theta) (-\dot\psi  \sin \theta)\\            -\dot\psi\sin\theta{\bf{I_x}}\dot\theta                                     & - & {\bf{I_x}}-\dot\psi\sin\theta \, \dot\theta                              \end{pmatrix}
 $$
 
 Grouping the terms group 3: 
@@ -346,102 +332,107 @@ $$
 \end{pmatrix}
 $$
 
-At this point is obvious that can simplify $$Z$$ component:
+This leaves us with the equation:
 
 $$
-\begin{pmatrix}-{\bf{I_x}} \dot\theta \dot\psi \cos\theta +{\bf{I_z}} \dot\theta \dot\psi \cos\theta + {\bf{I_z}} \dot\theta \dot\rho \\- {\bf{I_x}} \dot\psi ^2 \cos  \theta  \sin  \theta  + {\bf{I_z}} \dot\psi ^2 \cos  \theta \sin  \theta +{\bf{I_z}} \dot\rho  \dot\psi  \sin  \theta \\ 0   \end{pmatrix}
+\overrightarrow{\mathbf{M}}^{gyro}_{A} = 
+\begin{pmatrix}
+\mathbf{I_x}(-\ddot\psi\sin\theta - \dot\psi\dot\theta\cos\theta) \\
+\mathbf{I_x}\ddot\theta \\ 
+\mathbf{I_z}(\ddot\rho + \ddot\psi\cos\theta - \dot\psi\dot\theta\sin\theta)
+\end{pmatrix} + 
+\begin{pmatrix}
+-\mathbf{I_x} \dot\theta \dot\psi \cos\theta + \mathbf{I_z} \dot\theta \dot\psi \cos\theta + \mathbf{I_z} \dot\theta \dot\rho \\
+-\mathbf{I_x} \dot\psi^2 \cos\theta \sin\theta + \mathbf{I_z} \dot\psi^2 \cos\theta \sin\theta + \mathbf{I_z} \dot\rho \dot\psi \sin\theta \\
+0
+\end{pmatrix}
 $$
 
-This leave us with the equation:
+Combining terms, the gyroscopic moment becomes:
 
 $$
-\overrightarrow{\bf {M}}{^{gyro}_{A}} = \begin{pmatrix}{\bf{I_x}}\left({-\ddot\psi\sin\theta}-{\dot\psi\dot\theta\cos\theta}\right) \\{\bf{I_x}}\ddot\theta \\ {\bf{I_z}}\left({\ddot\rho +\ddot\psi\cos\theta}-{\dot\psi\dot\theta\sin\theta}\right) \\\end{pmatrix} +                \begin{pmatrix}-{\bf{I_x}} \dot\theta \dot\psi \cos\theta +{\bf{I_z}} \dot\theta \dot\psi \cos\theta + {\bf{I_z}} \dot\theta \dot\rho \\- {\bf{I_x}} \dot\psi ^2 \cos  \theta  \sin  \theta  + {\bf{I_z}} \dot\psi ^2 \cos  \theta \sin  \theta +{\bf{I_z}} \dot\rho  \dot\psi  \sin  \theta \\ 0   \end{pmatrix}
+\overrightarrow{\mathbf{M}}^{gyro}_{A} =  
+\begin{pmatrix}
+\mathbf{I_x} (-\dot\theta \dot\psi \cos\theta - \ddot\psi \sin\theta) - \mathbf{I_x} \dot\theta \dot\psi \cos\theta + \mathbf{I_z} \dot\theta \dot\psi \cos\theta + \mathbf{I_z} \dot\theta \dot\rho \\
+\mathbf{I_x} \ddot\theta - \mathbf{I_x} \dot\psi^2 \cos\theta \sin\theta + \mathbf{I_z} \dot\psi^2 \cos\theta \sin\theta + \mathbf{I_z} \dot\rho \dot\psi \sin\theta \\
+\mathbf{I_z} (\ddot\rho + \ddot\psi \cos\theta - \dot\theta \dot\psi \sin\theta)
+\end{pmatrix}
 $$
 
-$$
-\overrightarrow{\bf {M}}{^{gyro}_{A}} =  \begin{pmatrix}{\bf{I_x}} (-\dot\theta  \dot\psi  \cos  \theta -\ddot\psi  \sin  \theta ) -{\bf{I_x}} \dot\theta  \dot\psi  \cos  \theta +{\bf{I_z}} \dot\theta  \dot\psi  \cos  \theta  + {\bf{I_z}} \dot\theta  \dot\rho\\{\bf{I_x}} \ddot\theta -{\bf{I_x}} \dot\psi ^2 \cos  \theta \sin  \theta +{\bf{I_z}} \dot\psi ^2 \cos  \theta  \sin  \theta  +{\bf{I_z}} \dot\rho  \dot\psi  \sin  \theta  \\{\bf{I_z}} (\ddot\rho +\ddot\psi  \cos  \theta -\dot\theta  \dot\psi  \sin  \theta )\end{pmatrix}
-$$
-
-To further simplify the equation we substitute the $$I$$ terms across the equation:
+To further simplify the equation, we substitute the $$\mathbf{I}$$ terms across the equation:
 
 $$
-if \quad{\bf{I}} =MR^2 \\ {\bf{I_x}}=  \frac{1}{4}  MR^2 = \frac{1}{4}{\bf{I}}\qquad
-
- {\bf{I_z}} = \frac{1}{2}MR^2 =\frac{1}{2}{\bf{I}}
-
+\text{If} \quad \mathbf{I} = MR^2, \quad \mathbf{I_x} = \frac{1}{4} MR^2 = \frac{1}{4} \mathbf{I}, \quad \mathbf{I_z} = \frac{1}{2}MR^2 = \frac{1}{2} \mathbf{I}
 $$
 
 $$
-\overrightarrow{\bf {M}}{^{gyro}_{A}} =  \begin{pmatrix}\frac{1}{4}{\bf{I}} (-\dot\theta  \dot\psi  \cos  \theta-\ddot\psi  \sin  \theta ) -\frac{1}{4}{\bf{I}} \dot\theta  \dot\psi  \cos  \theta +\frac{1}{2}{\bf{I}} \dot\theta  \dot\psi  \cos  \theta  + \frac{1}{2}{\bf{I}} \dot\theta  \dot\rho\\\frac{1}{4}{\bf{I}} \ddot\theta -\frac{1}{4}{\bf{I}} \dot\psi ^2 \cos  \theta  \sin  \theta +\frac{1}{2}{\bf{I}} \dot\psi ^2 \cos  \theta  \sin  \theta  +\frac{1}{2}{\bf{I}} \dot\rho  \dot\psi  \sin  \theta  \\\frac{1}{2}{\bf{I}} (\ddot\rho +\ddot\psi  \cos  \theta -\dot\theta  \dot\psi  \sin  \theta )\end{pmatrix}
+\overrightarrow{\mathbf{M}}^{gyro}_{A} =  \begin{pmatrix}\frac{1}{4}\mathbf{I} (-\dot\theta  \dot\psi  \cos  \theta -\ddot\psi  \sin  \theta ) -\frac{1}{4}\mathbf{I} \dot\theta  \dot\psi  \cos  \theta +\frac{1}{2}\mathbf{I} \dot\theta  \dot\psi  \cos  \theta  + \frac{1}{2}\mathbf{I} \dot\theta  \dot\rho\\\frac{1}{4}\mathbf{I} \ddot\theta -\frac{1}{4}\mathbf{I} \dot\psi ^2 \cos  \theta  \sin  \theta +\frac{1}{2}\mathbf{I} \dot\psi ^2 \cos  \theta  \sin  \theta  +\frac{1}{2}\mathbf{I} \dot\rho  \dot\psi  \sin  \theta  \\\frac{1}{2}\mathbf{I} (\ddot\rho +\ddot\psi  \cos  \theta -\dot\theta  \dot\psi  \sin  \theta )\end{pmatrix}
 $$
 
-We collect common values and simplify the equation. The final equation for the momentum of the the flywheel on our VR controller is: 
+We collect common terms and simplify the equation. The final equation for the momentum of the flywheel in our VR controller is:
 
 $$
-\tag{9}\overrightarrow{\bf {M}}{^{gyro}_{A}} =\begin{pmatrix}\frac{1}{4} {\bf{I}} (2 \dot\theta \dot\rho -\ddot\psi \sin \theta ) \\ \frac{1}{4} {\bf{I}} (\ddot\theta +\dot\psi  \sin \theta  (2 \dot\rho +\dot\psi  \cos \theta )) \\ \frac{1}{2} {\bf{I}} (\ddot\rho +\ddot\psi  \cos \theta -\dot\theta  \dot\psi  \sin \theta )\end{pmatrix}
-
+\tag{9}\overrightarrow{\mathbf{M}}^{gyro}_{A} =\begin{pmatrix}\frac{1}{4} \mathbf{I} (2 \dot\theta \dot\rho -\ddot\psi \sin \theta ) \\ \frac{1}{4} \mathbf{I} (\ddot\theta + \dot\psi  \sin \theta  (2 \dot\rho + \dot\psi  \cos \theta )) \\ \frac{1}{2} \mathbf{I} (\ddot\rho + \ddot\psi  \cos \theta - \dot\theta  \dot\psi  \sin \theta )\end{pmatrix}
 $$
 
 ## Torque applied on the handle
 
-The output of equation 9 or 8 represents the momentum on frame A.
-
-To define it relative to the handle, we will need to translate it to the required system of reference. This  can be done by applying the appropriate rotation matrix:
+The output of equation (9) represents the momentum in frame A. To express this relative to the handle, we need to translate it to the corresponding system of reference by applying the appropriate rotation matrix:
 
 $$
-\overrightarrow{\bf {M}}{^{gyro}_{D}} =  R_{ A \rightarrow D} \cdot \overrightarrow{\bf {M}}{^{gyro}_{A}} = R_{ C \rightarrow D} \cdot R_{ A \rightarrow C} \cdot \overrightarrow{\bf {M}}{^{gyro}_{A}}  
+\overrightarrow{\mathbf{M}}^{gyro}_{D} =  R_{A \rightarrow D} \cdot \overrightarrow{\mathbf{M}}^{gyro}_{A} = R_{C \rightarrow D} \cdot R_{A \rightarrow C} \cdot \overrightarrow{\mathbf{M}}^{gyro}_{A}
 $$
 
-The transformation matrix $$A \rightarrow D$$ is composed of two rotation matrices, first step $$A \rightarrow C$$ rotates over the Y-axis, and a second step $$C \rightarrow D$$ rotating over the Z-axis: 
-
-Rotation over the Y: 
+The transformation matrix from A to D is composed of two rotation matrices. The first step from A to C involves a rotation about the Y-axis, and the second step from C to D involves a rotation about the Z-axis:
 
 <p align="center">
-    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%205.png" width="560" alt="HapticWhirl Image 5">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%205.png" width="560" alt="Diagram showing the rotation from frame A to C around the Y-axis, and from frame C to D around the Z-axis, demonstrating the orientation change for the handle in the HapticWhirl device.">
+    <br>
+    <em>Figure: Rotation from frame A to frame D through intermediate frame C</em>
 </p>
 
-
 $$
-R_{A\rightarrow C} =\begin{pmatrix}\color{red}\cos\theta & 0  & \color{blue}\sin\theta\\\color{red} 0  & 1 &\color{blue}0\\\color{red}-\sin\theta&0&\color{blue}\cos\theta\\\end{pmatrix}\\\\
+R_{A \rightarrow C} =
+\begin{pmatrix}
+\color{red}\cos\theta & 0 & \color{blue}\sin\theta \\
+0 & 1 & 0 \\
+\color{red}-\sin\theta & 0 & \color{blue}\cos\theta \\
+\end{pmatrix}\\
 $$
 
-Rotation over the Z: 
+Rotation over the Z-axis:
 
 <p align="center">
-    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%206.png" width="560" alt="HapticWhirl Image 6">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%206.png" width="560" alt="Diagram showing the rotation matrix for rotation about the Z-axis, used to transform coordinates from frame C to frame D in the HapticWhirl device.">
+    <br>
+    <em>Figure: Rotation matrix for Z-axis transformation from frame C to D</em>
 </p>
 
 $$
 R_{C \rightarrow D} = 
 \begin{pmatrix}
-\color{red}\cos\psi & \color{green}-\sin\psi  &0\\
-\color{red}\sin\psi  & \color{green}\cos\psi  &0\\
-\color{red}0&\color{green}0&1\\
+\color{red}\cos\psi & \color{green}-\sin\psi & 0 \\
+\color{red}\sin\psi & \color{green}\cos\psi & 0 \\
+0 & 0 & 1 \\
 \end{pmatrix}\\
 $$
 
-By combining both rotation matrices $$R_{A\rightarrow D} = R_{A \rightarrow C} \cdot  R_{C \rightarrow D}$$  we obtain the following rotation matri
+By combining both rotation matrices $$R_{A\rightarrow D} = R_{A \rightarrow C} \cdot  R_{C \rightarrow D}$$ we obtain the following rotation matrix:
 
 $$
-\tag{10} {R_{A \rightarrow D} =  \begin{pmatrix}\cos\theta\cos\psi & -\sin\psi  &\sin\theta\cos\psi\\\cos\theta\sin\psi  & \cos\psi  &\sin\theta\sin\psi\\-\sin\theta&0&\cos\theta\\\end{pmatrix}\\}
+\tag{10} R_{A \rightarrow D} =  \begin{pmatrix}\cos\theta\cos\psi & -\sin\psi  &\sin\theta\cos\psi\\\cos\theta\sin\psi  & \cos\psi  &\sin\theta\sin\psi\\-\sin\theta&0&\cos\theta\\\end{pmatrix}\\
 $$
 
-However when we measure using the ATI sensor we got an inverted value of Z, changing the value of the z value to correct the model to match the readings. 
-
-using:
+However, when we measure using the ATI sensor, we get an inverted value of Z. To correct the model to match the readings, we change the sign of the Z component in the rotation matrix:
 
 $$
-R_{A\rightarrow C} =\begin{pmatrix}\color{red}\cos\theta & 0  & \color{blue}\sin\theta\\\color{red} 0  & 1 &\color{blue}0\\\color{red}\sin\theta&0&\color{blue}\cos\theta\\\end{pmatrix}\\\\
+R_{A\rightarrow C} =\begin{pmatrix}\color{red}\cos\theta & 0  & \color{blue}\sin\theta\\\color{red} 0  & 1 &\color{blue}0\\\color{red}-\sin\theta&0&\color{blue}-\cos\theta\\\end{pmatrix}\\
 $$
 
-$$
-\tag{10} {R_{A \rightarrow D} =  \begin{pmatrix}\cos\theta\cos\psi & -\sin\psi  &\sin\theta\cos\psi\\\cos\theta\sin\psi  & \cos\psi  &\sin\theta\sin\psi\\\sin\theta&0&\cos\theta\\\end{pmatrix}\\}
-$$
-
-Finally, the torque applied on the handle is computed combining (7) and (8) as: 
+Finally, the torque applied on the handle is computed by combining the results from equations (7) and (8) as follows:
 
 $$
-\overrightarrow{\bf {M}}{^{gyro}_{D}} =  R_{ A \rightarrow D} \cdot \overrightarrow{\bf {M}}{^{gyro}_{A}}
+\overrightarrow{\mathbf{M}}^{gyro}_{D} =  R_{A \rightarrow D} \cdot \overrightarrow{\mathbf{M}}^{gyro}_{A}
 $$
 
 # Solving for the different moments
