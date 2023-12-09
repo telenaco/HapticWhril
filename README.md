@@ -57,23 +57,10 @@ This equation indicates that the torque output is the product of the flywheel's 
 The steered momentum wheel refers to the output momentum generated when the gimbal axis is also actuated. 
 
 $$
-\tag{2}\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =  \overrightarrow\omega^{gimbal} \times \mathbf{I} \overrightarrow\omega^{disk} 
-$$
-
-$$
 \tag{2}\overrightarrow{\tau}= \frac{d \overrightarrow{L}}{dt} =  \overrightarrow{\omega}^{gimbal} \times \mathbf{I} \overrightarrow{\omega}^{disk}
 $$
 
 The combination of equations 1. and 2. describes the momentum caused by the disk in its frame of reference (A), considering both the angular acceleration of the disk and the cross product of the gimbal's angular velocity with the disk's angular momentum. 
-
-$$
-\tag{3} {\overrightarrow{\bf {M}}{^{gyro}_{A}} =
-{\bf{I}} \cdot
-\dot{\overrightarrow{\omega}}{^{Disk}_{A}}+
-\overrightarrow{\omega}{^{Gimbal}_{A}} \times 
-({\bf{I}} \cdot 
-{\overrightarrow{\omega}}{^{Disk}_{A}}) }
-$$
 
 $$
 \tag{3} \overrightarrow{\mathbf{M}}^{gyro}_A =
@@ -90,74 +77,93 @@ The controller can be divided into the different objects that it is composed of.
 
 $$
 \begin{array}{| l | c | c | c |}\hline
-\text{Object}        & \text{Space}   & \text{Angle}     \\\hline
-\\[-0.5em] disk      & A              & \rho            \\ \\[-0.5em]\hline
-\\[-0.5em] inner (pitch) & B          & \theta          \\ \\[-0.5em]\hline
-\\[-0.5em] outer (yaw)   & C          & \psi            \\ \\[-0.5em]\hline
-\\[-0.5em] handle    & D              &                 \\ \\[-0.5em]\hline 
+\text{Object}        & \text{Space}   & \text{Angle}     & \\\hline
+\\[-0.5em] disk      & A              & \rho            & \\ \\[-0.5em]\hline
+\\[-0.5em] inner (pitch) & B          & \theta          & \\ \\[-0.5em]\hline
+\\[-0.5em] outer (yaw)   & C          & \psi            & \\ \\[-0.5em]\hline
+\\[-0.5em] handle    & D              &                 & \\ \\[-0.5em]\hline 
 \end{array}
 $$
 
 With the subscript  and superscript as follow
 
 $$
-\text{variable}{^{objcet}_{space}} 
+\text{variable}^{object}_{space}
 $$
 
-For example in the following equation, we refer to the angular velocity of the gimbal2 (outer gimbal ) on the A space. 
+For example, in the following equation, we refer to the angular velocity of gimbal2 (the outer gimbal) in the A frame:
 
 $$
-\overrightarrow\omega{^{outer}_{A}} 
+\overrightarrow{\omega}{^{outer}_{A}}
 $$
 
 <p align="center">
-    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/GyroFrames.png" width="560" alt="HapticWhirl - GyroFrames">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/GyroFrames.png" width="560" alt="Illustration of the HapticWhirl kinematic model showing the A, B, C, and D coordinate frames with axes labeled in red, green, and blue, representing the different components of the system including the disk and gimbals.">
+    <br>
+    <em>Figure: Coordinate frames of the HapticWhirl kinematic model</em>
 </p>
 
-Equation 3 angular velocities $$\omega$$:
+In Equation 3, the angular velocities are denoted as follows:
 
-- $$\overrightarrow{\omega}{^{Gimbal}_{A}}$$ - refers to the sum angular rotation of both gimbals.
-- $$\overrightarrow{\omega}{^{Disk}_{A}}$$ - refers to the rotation of the disk and the contribution of both gimbals to the speed of the disk.
+- $$\overrightarrow{\omega}{^{Gimbal}_{A}}$$ - refers to the combined angular rotation of both gimbals.
+- $$\overrightarrow{\omega}{^{Disk}_{A}}$$ - refers to the rotation of the disk and the contribution of both gimbals to the disk's rotational speed.
 
 We decompose the equation from right to left, starting with the angular velocity of the disk in frame A.
 
-## Angular Velocity Disk($$\overrightarrow{\omega}{^{Disk}_{A}}$$ )
+## Angular Velocity Disk ($$\overrightarrow{\omega}{^{Disk}_{A}}$$)
 
-This is the sum of the angular velocity of the disk and the contribution to it of the two gimbals in frame A:  
+This is the sum of the angular velocity of the disk and the contributions to it from the two gimbals in frame A:
 
 $$
 \overrightarrow{\omega}{^{Disk}_{A}} = \overrightarrow{\omega}{^{disk}_{A}} + \overrightarrow{\omega}{^{inner}_{A}} + \overrightarrow{\omega}{^{outer}_{A}}
 $$
 
-We have to apply a rotation matrix to the gimbal, the inner gimbal is rotated from frame B→A and the outer matrix rotates from frame C → A:
+We must apply a rotation matrix to the gimbal; the inner gimbal is rotated from frame B to A, and the outer gimbal from frame C to A:
 
 $$
 \overrightarrow{\omega}{^{Disk}_{A}} = 
-
 \begin{pmatrix}
 0\\ 
 0\\ 
 \dot\rho\\
 \end{pmatrix} + 
-(R_{B \rightarrow A} \ \cdot \overrightarrow{\omega}{^{inner}_{B}}) +
-(R_{C \rightarrow A} \ \cdot \overrightarrow{\omega}{^{outer}_{C}})  
+(R_{B \rightarrow A} \cdot \overrightarrow{\omega}{^{inner}_{B}}) +
+(R_{C \rightarrow A} \cdot \overrightarrow{\omega}{^{outer}_{C}})  
 $$
 
-Disk and inner gimbal share the same coordinate frame hence  $$A = B$$.  Hence the rotation matrix $$R_{B \rightarrow A}$$ is an identity matrix. The rotation matrix $$R_{C\rightarrow A}$$  rotates over the Y-axis. 
+Disk and inner gimbal share the same coordinate frame hence $$A = B$$. Hence the rotation matrix $$R_{B \rightarrow A}$$ is an identity matrix. The rotation matrix $$R_{C\rightarrow A}$$ rotates over the Y-axis.
 
 <p align="center">
-    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%202.png" width="560" alt="HapticWhirl Image">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%202.png" width="560" alt="Diagram showing rotation about the Y-axis with coordinates X'(cosB, 0, -sinB), Z'(sinB, 0, cosB), and angles represented, illustrating the rotation matrix R_C to A.">
+    <br>
+    <em>Figure: Rotation about the Y-axis illustrating the rotation matrix \( R_{C \rightarrow A} \)</em>
 </p>
 
 <p align="center">
-    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%203.png" alt="HapticWhirl Image 3">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%203.png" width="560" alt="Diagram of rotation matrices and angular velocity vectors applied to the HapticWhirl device, illustrating the transformation from the B frame to the A frame, and the effect of the gimbal's rotation on the disk's angular velocity in the A frame.">
+    <br>
+    <em>Figure: Rotation matrices and angular velocity vectors in the HapticWhirl device</em>
 </p>
 
-The rotation matrix $$R_{A \rightarrow B}$$ is a rotation over the Y axis, but since the rotation in this case is $$R_{B \rightarrow A}$$ we invert it. 
+The rotation matrix $$R_{A \rightarrow B}$$ is a rotation over the Y-axis, but since the rotation in this case is $$R_{B \rightarrow A}$$ we invert it.
+
+$$
+\overrightarrow{\omega}{^{Disk}_{A}}  = 
+\begin{pmatrix}0\\ 0\\ \dot\rho\\\end{pmatrix} + \begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} \cdot\begin{pmatrix}0\\ \dot\theta\\ 0\\\end{pmatrix} +\begin{pmatrix}\cos\theta & 0 & -\sin\theta \\ 0 & 1 & 0 \\ \sin\theta & 0 & \cos\theta\end{pmatrix} \cdot\begin{pmatrix}0\\ 0\\ \dot\psi\\\end{pmatrix}
+$$
 
 $$
 \overrightarrow{\omega}{^{Disk}_{A}}  = 
 \begin{pmatrix}0\\ 0\\ \dot\rho\\\end{pmatrix} + \begin{pmatrix}1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} \cdot\begin{pmatrix}0\\ \dot\theta\\ 0\\\end{pmatrix} +\begin{pmatrix}\cos\theta & 0 & -sin\theta \\ 0 & 1 & 0 \\ \sin\theta & 0 & \cos\theta\end{pmatrix} \cdot\begin{pmatrix}0\\ 0\\ \dot\psi\\\end{pmatrix}
+$$
+
+$$
+\overrightarrow{\omega}{^{Disk}_{A}}  = 
+\begin{pmatrix}
+0 &+ &0 &+ &-\dot\psi \sin{\theta} \\ 
+0 &+ &\dot\theta &+ &0\\ 
+\dot\rho &+ &0 &+ &\dot\psi \cos\theta
+\end{pmatrix}
 $$
 
 $$
