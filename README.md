@@ -1,14 +1,15 @@
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-# 3D model available to donwload
+In this page you can find all the required files and code to build a gyroscope haptic device. 
+
+You can download a full 3D model ready to print from the fusion website:
 
 <div style="text-align:center;">
 <iframe width="800" height="450" src="https://myhub.autodesk360.com/ue2901c7f/g/shares/SHd38bfQT1fb47330c99796b3271601d0da5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 
-# HapticWhirl - Solving the Forward and Inverse Kinematics
-
+# Understanding the theory 
 
 If you are new to gyroscopes, this video will help you understand the output torques from a gyroscope.
 
@@ -31,7 +32,7 @@ The actuation of the flywheel and the gimbal creates two moments that result in 
 ### Momentum Wheel
 
 <p align="center">
-<img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled.png" width="800" height="450">
+<img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled.png" width="560">
 </p>
 
 (a) Momentum wheel
@@ -49,7 +50,10 @@ This equation indicates that the torque output is the product of the flywheel's 
 
 ### Steered Momentum Wheel
 
-![(b) Steered momentum wheel](HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%201.png)
+<p align="center">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%201.png" width="560" alt="(b) Steered momentum wheel">
+</p>
+
 
 (b) Steered momentum wheel
 
@@ -91,7 +95,9 @@ $$
 \overrightarrow\omega{^{outer}_{A}} 
 $$
 
-![HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/GyroFrames.png](HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/GyroFrames.png)
+<p align="center">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/GyroFrames.png" width="560" alt="HapticWhirl - GyroFrames">
+</p>
 
 Equation 3 angular velocities $\omega$: 
 
