@@ -79,7 +79,12 @@ $$
 The controller can be divided into the different objects that it is composed of. The correspondent coordinate spaces and position variables are shown in table 1. The origin of all the spaces is located at the centre of the mass of the flywheel. It is worth noting that since the disk is mounted on the inner gimbal the coordinate space A and B are always in the same orientation. The variables used in this tutorial are: 
 
 $$
-\begin{array}{| l |c 			| c 					|c 	}\hline\text{Object}  	& \text{Space}  & \text{Angle}     \\\hline \\[-0.5em]disk            & A             & \rho   			\\ \\[-0.5em]\hline \\[-0.5em]inner (pitch) & B             & \theta				\\ \\[-0.5em]\hline \\[-0.5em]outer(yaw) & C             & \psi				\\ \\[-0.5em]\hline \\[-0.5em]handle          & D             & 				\\ \\[-0.5em]\hline 
+\begin{array}{| l | c | c | c |}\hline
+\text{Object}        & \text{Space}   & \text{Angle}     \\\hline
+\\[-0.5em] disk      & A              & \rho            \\ \\[-0.5em]\hline
+\\[-0.5em] inner (pitch) & B          & \theta          \\ \\[-0.5em]\hline
+\\[-0.5em] outer (yaw)   & C          & \psi            \\ \\[-0.5em]\hline
+\\[-0.5em] handle    & D              &                 \\ \\[-0.5em]\hline 
 \end{array}
 $$
 
@@ -100,6 +105,8 @@ $$
 </p>
 
 Equation 3 angular velocities $\omega$: 
+Equation 3 angular velocities \( \omega \)
+
 
 - $\overrightarrow{\omega}{^{Gimbal}_{A}}$ - refers to the sum angular rotation of both gimbals.
 - $\overrightarrow{\omega}{^{Disk}_{A}}$ - refers to the rotation of the disk and the contribution of both gimbals to the speed of the disk.
