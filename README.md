@@ -2,7 +2,9 @@
 
 # 3D model available to donwload
 
-<iframe width="560" height="315" src="https://myhub.autodesk360.com/ue2901c7f/g/shares/SHd38bfQT1fb47330c99796b3271601d0da5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div style="text-align:center;">
+<iframe width="800" height="450" src="https://myhub.autodesk360.com/ue2901c7f/g/shares/SHd38bfQT1fb47330c99796b3271601d0da5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 
 # HapticWhirl - Solving the Forward and Inverse Kinematics
@@ -11,13 +13,13 @@
 If you are new to gyroscopes, this video will help you understand the output torques from a gyroscope.
 
 <p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jQEKhIovKA0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/jQEKhIovKA0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
 
 For a more in-depth mathematical approach, check out this video series:
 
 <p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bYF0PGsF92k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/bYF0PGsF92k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
 
 Further details that are covered in this tutorial are explained more comprehensively in the class notes for the [aeronautics-and-astronautics MIT course](https://ocw.mit.edu/courses/aeronautics-and-astronautics/16-07-dynamics-fall-2009/lecture-notes/), particularly from lectures 26 onwards.
@@ -29,7 +31,7 @@ The actuation of the flywheel and the gimbal creates two moments that result in 
 ### Momentum Wheel
 
 <p align="center">
-<img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled.png" width="560">
+<img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled.png" width="800" height="450">
 </p>
 
 (a) Momentum wheel
