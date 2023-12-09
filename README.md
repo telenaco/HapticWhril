@@ -1,15 +1,16 @@
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-In this page you can find all the required files and code to build a gyroscope haptic device. 
+Welcome to this guide for constructing and operating a kinesthetic haptic controller that harnesses the dynamic properties of a flywheel with dual axes of rotation. This page serves as a one-stop resource, offering all the essential files, codes, and  instructions necessary to create your own gyroscope-based haptic device.
 
-You can download a full 3D model ready to print from the fusion website:
+For a head start, we've provided a fully-realized 3D model, ready for 3D printing, accessible via the Fusion website. You can explore the model in detail through the embedded frame below or download it from the dropdown menu:
 
 <div style="text-align:center;">
 <iframe width="800" height="450" src="https://myhub.autodesk360.com/ue2901c7f/g/shares/SHd38bfQT1fb47330c99796b3271601d0da5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+In the following sections, we'll delve deep into the theoretical underpinnings of the device, ensuring you have a robust understanding of the principles that drive its functionality.
 
-# Understanding the theory 
+# Understanding the Theory
 
 If you are new to gyroscopes, this video will help you understand the output torques from a gyroscope.
 
@@ -41,6 +42,10 @@ The momentum of the flywheel is perpendicular to the rotation plane of the flywh
 
 $$
 \tag{1}\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =\mathbf{I}  \frac{d}{dt} \overrightarrow\omega^{disk} = \mathbf{I}  \dot{\overrightarrow{\omega}}{^{disk}_{}}
+$$
+
+$$
+\overrightarrow{\tau} = \frac{d\overrightarrow{L}}{dt} = \mathbf{I} \frac{d}{dt}\overrightarrow{\omega}^{\text{disk}} = \mathbf{I} \dot{\overrightarrow{\omega}}^{\text{disk}}
 $$
 
 This equation indicates that the torque output is the product of the flywheel's moment of inertia and the rate of change of its angular velocity.
