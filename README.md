@@ -140,10 +140,10 @@ Disk and inner gimbal share the same coordinate frame hence  $$A = B$$.  Hence t
 </p>
 
 <p align="center">
-    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%203.png" width="560" alt="HapticWhirl Image 3">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%203.png" alt="HapticWhirl Image 3">
 </p>
 
-The rotation matrix $R_{A \rightarrow B}$ is a rotation over the Y axis, but since the rotation in this case is $R_{B \rightarrow A}$ we invert it. 
+The rotation matrix $$R_{A \rightarrow B}$$ is a rotation over the Y axis, but since the rotation in this case is $$R_{B \rightarrow A}$$ we invert it. 
 
 $$
 \overrightarrow{\omega}{^{Disk}_{A}}  = 
@@ -163,9 +163,9 @@ $$
 \tag{4} \overrightarrow{\omega}{^{Disk}_{A}}  = \begin{pmatrix}-\dot\psi \sin{\theta} \\ \dot\theta \\ \dot\rho + \dot\psi \cos\theta\end{pmatrix}
 $$
 
-Disk Inertia Torque Matrix ($I$)
+Disk Inertia Torque Matrix ($$I$$)
 
-The moment component $\mathbf{I}$ refers to the Inertial tensor, representing the moment of inertia about the different axes :
+The moment component $$\mathbf{I}$$ refers to the Inertial tensor, representing the moment of inertia about the different axes :
 
 $$
 \mathbf{I} = \begin{bmatrix}I_{xx}&I_{xy}&I_{xz}\\I_{yx}&I_{yy}&I_{yz}\\I_{zx}&I_{zy}&I_{zz}\end{bmatrix}
@@ -177,17 +177,19 @@ $$
 \mathbf{I}=\begin{pmatrix}I_{xx}&0&0\\0&I_{yy}&0\\0&0&I_{zz}\end{pmatrix}
 $$
 
-![HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/unnamed.gif](HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/unnamed.gif)
+<p align="center">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/unnamed.gif" width="560" alt="HapticWhirl Animation">
+</p>
 
-We can replace $I_{xx}, I_{yy}\ \ and\ \ I_{zz}$ with the disk moment of inertia: 
+We can replace $$I_{xx}, I_{yy}\ \ and\ \ I_{zz}$$ with the disk moment of inertia: 
 
-hence $I$ becomes:
+hence $$I$$ becomes:
 
 $$
 \tag{5} \mathbf{I}=\begin{pmatrix}\frac{1}{4}MR^2&0&0\\0&\frac{1}{4}MR^2&0\\0&0&\frac{1}{2}MR^2\\\end{pmatrix}
 $$
 
-## Angular Velocity Gimbal($\overrightarrow{\omega}{^{Gimbal}_{A}}$)
+## Angular Velocity Gimbal($$\overrightarrow{\omega}{^{Gimbal}_{A}}$$)
 
 The other component on equation 1. is the correspondent to the sum of the angular velocity of both of the axis in the gimbal with respect to frame A. 
 
@@ -211,7 +213,7 @@ $$
 \end{pmatrix}
 $$
 
-## Angular Acceleration Disk($\dot{\overrightarrow{\omega}}{^{Disk}_{A}}$)
+## Angular Acceleration Disk($$\dot{\overrightarrow{\omega}}{^{Disk}_{A}}$$)
 
 Derivative of equation 4 applying the chain rule: 
 
@@ -275,7 +277,7 @@ $$
 \begin{pmatrix}-{\bf{I_x}} \dot\theta \dot\psi \cos\theta +{\bf{I_z}} \dot\theta \dot\psi \cos\theta + {\bf{I_z}} \dot\theta \dot\rho \\- {\bf{I_x}} \dot\psi ^2 \cos  \theta  \sin  \theta  + {\bf{I_z}} \dot\psi ^2 \cos  \theta  \sin  \theta +{\bf{I_z}} \dot\rho  \dot\psi  \sin  \theta \\ {\bf{I_x}} \dot\theta  \dot\psi  \sin  \theta - {\bf{I_x}} \dot\theta  \dot\psi  \sin  \theta    \end{pmatrix}
 $$
 
-At this point is obvious that can simplify $Z$ component:
+At this point is obvious that can simplify $$Z$$ component:
 
 $$
 \begin{pmatrix}-{\bf{I_x}} \dot\theta \dot\psi \cos\theta +{\bf{I_z}} \dot\theta \dot\psi \cos\theta + {\bf{I_z}} \dot\theta \dot\rho \\- {\bf{I_x}} \dot\psi ^2 \cos  \theta  \sin  \theta  + {\bf{I_z}} \dot\psi ^2 \cos  \theta \sin  \theta +{\bf{I_z}} \dot\rho  \dot\psi  \sin  \theta \\ 0   \end{pmatrix}
@@ -291,7 +293,7 @@ $$
 \overrightarrow{\bf {M}}{^{gyro}_{A}} =  \begin{pmatrix}{\bf{I_x}} (-\dot\theta  \dot\psi  \cos  \theta -\ddot\psi  \sin  \theta ) -{\bf{I_x}} \dot\theta  \dot\psi  \cos  \theta +{\bf{I_z}} \dot\theta  \dot\psi  \cos  \theta  + {\bf{I_z}} \dot\theta  \dot\rho\\{\bf{I_x}} \ddot\theta -{\bf{I_x}} \dot\psi ^2 \cos  \theta \sin  \theta +{\bf{I_z}} \dot\psi ^2 \cos  \theta  \sin  \theta  +{\bf{I_z}} \dot\rho  \dot\psi  \sin  \theta  \\{\bf{I_z}} (\ddot\rho +\ddot\psi  \cos  \theta -\dot\theta  \dot\psi  \sin  \theta )\end{pmatrix}
 $$
 
-To further simplify the equation we substitute the $I$ terms across the equation:
+To further simplify the equation we substitute the $$I$$ terms across the equation:
 
 $$
 if \quad{\bf{I}} =MR^2 \\ {\bf{I_x}}=  \frac{1}{4}  MR^2 = \frac{1}{4}{\bf{I}}\qquad
@@ -321,11 +323,14 @@ $$
 \overrightarrow{\bf {M}}{^{gyro}_{D}} =  R_{ A \rightarrow D} \cdot \overrightarrow{\bf {M}}{^{gyro}_{A}} = R_{ C \rightarrow D} \cdot R_{ A \rightarrow C} \cdot \overrightarrow{\bf {M}}{^{gyro}_{A}}  
 $$
 
-The transformation matrix $A \rightarrow D$ is composed of two rotation matrices, first step $A \rightarrow C$ rotates over the Y-axis, and a second step $C \rightarrow D$ rotating over the Z-axis: 
+The transformation matrix $$A \rightarrow D$$ is composed of two rotation matrices, first step $$A \rightarrow C$$ rotates over the Y-axis, and a second step $$C \rightarrow D$$ rotating over the Z-axis: 
 
 Rotation over the Y: 
 
-![HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%205.png](HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%205.png)
+<p align="center">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%205.png" width="560" alt="HapticWhirl Image 5">
+</p>
+
 
 $$
 R_{A\rightarrow C} =\begin{pmatrix}\color{red}\cos\theta & 0  & \color{blue}\sin\theta\\\color{red} 0  & 1 &\color{blue}0\\\color{red}-\sin\theta&0&\color{blue}\cos\theta\\\end{pmatrix}\\\\
@@ -333,7 +338,9 @@ $$
 
 Rotation over the Z: 
 
-![HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%206.png](HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%206.png)
+<p align="center">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%206.png" width="560" alt="HapticWhirl Image 6">
+</p>
 
 $$
 R_{C \rightarrow D} = 
@@ -344,7 +351,7 @@ R_{C \rightarrow D} =
 \end{pmatrix}\\
 $$
 
-By combining both rotation matrices $R_{A\rightarrow D} = R_{A \rightarrow C} \cdot  R_{C \rightarrow D}$  we obtain the following rotation matri
+By combining both rotation matrices $$R_{A\rightarrow D} = R_{A \rightarrow C} \cdot  R_{C \rightarrow D}$$  we obtain the following rotation matri
 
 $$
 \tag{10} {R_{A \rightarrow D} =  \begin{pmatrix}\cos\theta\cos\psi & -\sin\psi  &\sin\theta\cos\psi\\\cos\theta\sin\psi  & \cos\psi  &\sin\theta\sin\psi\\-\sin\theta&0&\cos\theta\\\end{pmatrix}\\}
@@ -372,9 +379,9 @@ $$
 
 If we have a given torque and we want to replicate this on the controller we solve using the acceleration of the gimbal axis. To solve the for the different variables we usXe equation 9.
 
-## Solving for $\ddot\psi$
+## Solving for $$\ddot\psi$$
 
-Yaw acceleration is part of the $X \text{ and } Z$  axis. We solve first using the $X$component: 
+Yaw acceleration is part of the $$X \text{ and } Z$$  axis. We solve first using the $$X$$component: 
 
 $$
 \overrightarrow{\bf {M}}{^{gyro}_{Ax}} = \frac{1}{4} {\bf{I}} (2 \dot\theta \dot\rho -\ddot\psi \sin \theta )
@@ -410,7 +417,7 @@ $$
 \ddot\psi =\frac{2 \overrightarrow{\bf {M}}{^{gyro}_{Az}} }{{\bf{I}}\cos  \theta }-\frac{\ddot\rho}{\cos  \theta }  +\dot\theta  \dot\psi  \tan  \theta 
 $$
 
-## Solving for $\ddot\theta$
+## Solving for $$\ddot\theta$$
 
 $$
 \frac{1}{4} {\bf{I}} (\ddot\theta +\dot\psi  \sin \theta  (2 \dot\rho +\dot\psi  \cos \theta ))
@@ -428,14 +435,12 @@ $$
 \ddot\theta = \frac{4\overrightarrow{\bf {M}}{^{gyro}_{Ay}}}{{\bf{I}}} -\dot\psi   \sin\theta  (\dot\psi  \cos \theta +2 \dot\rho )
 $$
 
-## Solving for $\dot\theta$
+## Solving for $$\dot\theta$$
 
-Using the X component, we can solve for $\dot\theta$ :
+Using the X component, we can solve for $$\dot\theta$$ :
 
 $$
-
 \overrightarrow{\bf {M}}{^{gyro}_{Ax}}={\bf{I}}  \left(\frac{\dot\theta  \dot\rho }{2}-\frac{1}{4} \ddot\psi  (\sin  \theta )\right) 
-
 $$
 
 $$
@@ -472,9 +477,9 @@ $$
  \dot\theta  = \cot(\theta)-\frac{2 \overrightarrow{\bf {M}}{^{gyro}_{Az}}\csc(\theta)}{{\bf{I}}\dot\psi} + \frac{\ddot\rho \csc(\theta)}{\dot\psi}
 $$
 
-## Solving for $\dot\psi$
+## Solving for $$\dot\psi$$
 
-Using the Y component, we solve for $\dot\psi$:
+Using the Y component, we solve for $$\dot\psi$$:
 
 $$
 \ddot\theta +\dot\psi  (\sin  \theta ) (2 \dot\rho +\dot\psi  (\cos  \theta ))=\frac{4 \overrightarrow{\bf {M}}{^{gyro}_{Ay}}}{\bf{I}}
@@ -532,7 +537,7 @@ $$
 
 ## Solving equation 1
 
-solving on equation 1 for $\ddot\theta \text{ and } \ddot\psi$  , solving the $X$  component first: 
+solving on equation 1 for $$\ddot\theta \text{ and } \ddot\psi$$  , solving the $$X$$  component first: 
 
 $$
 m_x ={\bf{I_x}}\left({-\ddot\psi\sin\theta}-{\dot\psi\dot\theta\cos\theta}\right) \\ 
@@ -550,7 +555,7 @@ $$
 \tag{x}\ddot\psi={\dot\psi\dot\theta\cot\theta}\frac{m_x\csc\theta}{{\bf{I_x}}}
 $$
 
-Solving for $\dot\theta \text{ and } \dot\psi$, we continue from equation x above:
+Solving for $$\dot\theta \text{ and } \dot\psi$$, we continue from equation x above:
 
 $$
 \frac{m_x}{{\bf{I_x}}}{+\ddot\psi\sin\theta} ={\dot\psi\dot\theta\cos\theta}
@@ -564,7 +569,7 @@ $$
 \dot\theta =\frac{m_x sec\theta}{{\bf{I_x}}\dot\psi}{+\frac{\ddot\psi \tan\theta}{\dot\psi}} 
 $$
 
-Solving the $Y$ component:
+Solving the $$Y$$ component:
 
 $$
 m_y ={\bf{I_y}}\ddot\theta
@@ -574,13 +579,13 @@ $$
 \ddot\theta = \frac{m_y}{{\bf{I_y}}}
 $$
 
-Solving the $Z$  component: 
+Solving the $$Z$$  component: 
 
 $$
 m_z = {\bf{I_z}}\left({\ddot\rho +\ddot\psi\cos\theta}-{\dot\psi\dot\theta\sin\theta}\right)
 $$
 
-When the controller is running the disk is rotating at constant speed, hence $\ddot\rho$ is zero. Hence:
+When the controller is running the disk is rotating at constant speed, hence $$\ddot\rho$$ is zero. Hence:
 
 $$
 \frac{m_z}{{\bf{I_z}}}+\dot\psi\dot\theta\sin\theta = \ddot\psi\cos\theta
@@ -590,7 +595,7 @@ $$
 \ddot\psi = \frac{m_z sec\theta}{{\bf{I_z}}}+\dot\psi\dot\theta\tan\theta
 $$
 
-Solving for $\dot\theta \text{ and } \dot\psi$:
+Solving for $$\dot\theta \text{ and } \dot\psi$$:
 
 $$
 \frac{m_z}{{\bf{I_z}}}-\ddot\psi\cos\theta = \dot\psi\dot\theta\sin\theta 
@@ -604,6 +609,3 @@ $$
 \dot\theta= \frac{\ddot\psi \cot\theta}{\dot\psi} -\frac{m_z \csc\theta}{{\bf{I_z}} \dot\psi}
 $$
 
-## Equation 3
-
-Solving for x component:
