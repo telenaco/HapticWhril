@@ -140,7 +140,7 @@ Disk and inner gimbal share the same coordinate frame hence $$A = B$$. Hence the
 </p>
 
 <p align="center">
-    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%203.png" width="560" alt="Diagram of rotation matrices and angular velocity vectors applied to the HapticWhirl device, illustrating the transformation from the B frame to the A frame, and the effect of the gimbal's rotation on the disk's angular velocity in the A frame.">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%203.png" alt="Diagram of rotation matrices and angular velocity vectors applied to the HapticWhirl device, illustrating the transformation from the B frame to the A frame, and the effect of the gimbal's rotation on the disk's angular velocity in the A frame.">
     <br>
     <em>Figure: Rotation matrices and angular velocity vectors in the HapticWhirl device</em>
 </p>
@@ -154,11 +154,6 @@ $$
 
 $$
 \overrightarrow{\omega}{^{Disk}_{A}}  = 
-\begin{pmatrix}0\\ 0\\ \dot\rho\\\end{pmatrix} + \begin{pmatrix}1 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} \cdot\begin{pmatrix}0\\ \dot\theta\\ 0\\\end{pmatrix} +\begin{pmatrix}\cos\theta & 0 & -sin\theta \\ 0 & 1 & 0 \\ \sin\theta & 0 & \cos\theta\end{pmatrix} \cdot\begin{pmatrix}0\\ 0\\ \dot\psi\\\end{pmatrix}
-$$
-
-$$
-\overrightarrow{\omega}{^{Disk}_{A}}  = 
 \begin{pmatrix}
 0 &+ &0 &+ &-\dot\psi \sin{\theta} \\ 
 0 &+ &\dot\theta &+ &0\\ 
@@ -167,57 +162,47 @@ $$
 $$
 
 $$
-\overrightarrow{\omega}{^{Disk}_{A}}  = 
-\begin{pmatrix}
-&0 &+ &0 &+ & -\dot\psi \sin{\theta} \\ 
-&0 &+ &\dot\theta  &+ &0\\ 
-&\dot\rho &+  &0 &+  &\dot\psi \cos\theta
-\end{pmatrix}
-$$
-
-$$
 \tag{4} \overrightarrow{\omega}{^{Disk}_{A}}  = \begin{pmatrix}-\dot\psi \sin{\theta} \\ \dot\theta \\ \dot\rho + \dot\psi \cos\theta\end{pmatrix}
 $$
 
-Disk Inertia Torque Matrix ($$I$$)
-
-The moment component $$\mathbf{I}$$ refers to the Inertial tensor, representing the moment of inertia about the different axes :
+The inertia torque matrix of the disk, denoted by $$\mathbf{I}$$, is defined as the inertial tensor representing the moment of inertia about the different axes:
 
 $$
-\mathbf{I} = \begin{bmatrix}I_{xx}&I_{xy}&I_{xz}\\I_{yx}&I_{yy}&I_{yz}\\I_{zx}&I_{zy}&I_{zz}\end{bmatrix}
+\mathbf{I} = \begin{bmatrix}I_{xx} & I_{xy} & I_{xz} \\ I_{yx} & I_{yy} & I_{yz} \\ I_{zx} & I_{zy} & I_{zz}\end{bmatrix}
 $$
 
-However, for a disk this can be simplified to a [diagonal matrix](https://en.wikipedia.org/wiki/List_of_moments_of_inertia). 
+However, for a disk, this can be simplified to a [diagonal matrix](https://en.wikipedia.org/wiki/List_of_moments_of_inertia).
 
 $$
 \mathbf{I}=\begin{pmatrix}I_{xx}&0&0\\0&I_{yy}&0\\0&0&I_{zz}\end{pmatrix}
 $$
 
 <p align="center">
-    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/unnamed.gif" width="560" alt="HapticWhirl Animation">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/unnamed.gif" width="560" alt="Illustration of moments of inertia for symmetrical objects like disks, showing the distribution of mass and the resulting inertia around the central axis.">
+    <br>
+    <em>Figure: Moments of inertia for symmetrical objects</em>
 </p>
 
-We can replace $$I_{xx}, I_{yy}\ \ and\ \ I_{zz}$$ with the disk moment of inertia: 
+We can replace $$I_{xx}, I_{yy},\ and\ I_{zz}$$ with the disk's moment of inertia: 
 
-hence $$I$$ becomes:
-
+Hence, $$\mathbf{I}$$ becomes:
 $$
-\tag{5} \mathbf{I}=\begin{pmatrix}\frac{1}{4}MR^2&0&0\\0&\frac{1}{4}MR^2&0\\0&0&\frac{1}{2}MR^2\\\end{pmatrix}
-$$
-
-## Angular Velocity Gimbal($$\overrightarrow{\omega}{^{Gimbal}_{A}}$$)
-
-The other component on equation 1. is the correspondent to the sum of the angular velocity of both of the axis in the gimbal with respect to frame A. 
-
-$$
-\overrightarrow{\omega}{^{Gimbal}_{A}} =  R_{B \rightarrow A} \cdot \overrightarrow\omega{^{inner}_{B}} +R_{C \rightarrow A} \cdot \overrightarrow\omega{^{outer}_{C}} 
+\tag{5} \mathbf{I}=\begin{pmatrix}\frac{1}{4}MR^2&0&0\\0&\frac{1}{4}MR^2&0\\0&0&\frac{1}{2}MR^2\end{pmatrix}
 $$
 
+## Angular Velocity Gimbal ($$\overrightarrow{\omega}{^{Gimbal}_{A}}$$)
+
+The other component in equation (1) corresponds to the sum of the angular velocities of both axes in the gimbal with respect to frame A.
+
 $$
-\overrightarrow{\omega}{^{Gimbal}_{A}} = \begin{pmatrix} 1 & 0 & 0 \\  0 & 1 & 0 \\   0 & 0 & 1\end{pmatrix} \cdot
-  \begin{pmatrix}0\\ \dot\theta\\ 0\\\end{pmatrix} +
- \begin{pmatrix} \cos\theta & 0 & -sin\theta \\  0 & 1 & 0 \\   \sin\theta & 0 & \cos\theta  \end{pmatrix} \cdot
-  \begin{pmatrix}0\\ 0\\ \dot\psi\\\end{pmatrix}
+\overrightarrow{\omega}{^{Gimbal}_{A}} =  R_{B \rightarrow A} \cdot \overrightarrow{\omega}{^{inner}_{B}} + R_{C \rightarrow A} \cdot \overrightarrow{\omega}{^{outer}_{C}} 
+$$
+
+$$
+\overrightarrow{\omega}{^{Gimbal}_{A}} = \begin{pmatrix} 1 & 0 & 0 \\  0 & 1 & 0 \\   0 & 0 & 1 \end{pmatrix} \cdot
+  \begin{pmatrix}0\\ \dot{\theta}\\ 0\\\end{pmatrix} +
+ \begin{pmatrix} \cos{\theta} & 0 & -\sin{\theta} \\  0 & 1 & 0 \\   \sin{\theta} & 0 & \cos{\theta}  \end{pmatrix} \cdot
+  \begin{pmatrix}0\\ 0\\ \dot{\psi}\\\end{pmatrix}
 $$
 
 $$
@@ -229,12 +214,11 @@ $$
 \end{pmatrix}
 $$
 
-## Angular Acceleration Disk($$\dot{\overrightarrow{\omega}}{^{Disk}_{A}}$$)
-
-Derivative of equation 4 applying the chain rule: 
+## Angular Acceleration Disk ($$\dot{\overrightarrow{\omega}}{^{Disk}_{A}}$$)
+Derivative of equation (4) applying the chain rule:
 
 $$
-\tag{7}\dot{\overrightarrow{\omega}}{^{Disk}_{A}} = \begin{pmatrix}{-\ddot\psi\sin\theta}-{\dot\psi\dot\theta\cos\theta}\\\ddot\theta\\ {\ddot\rho +\ddot\psi\cos\theta}-{\dot\psi\dot\theta\sin\theta}\\\end{pmatrix}
+\tag{7}\dot{\overrightarrow{\omega}}{^{Disk}_{A}} = \begin{pmatrix}{-\ddot\psi\sin\theta} - {\dot\psi\dot\theta\cos\theta}\\\ddot\theta\\ {\ddot\rho + \ddot\psi\cos\theta} - {\dot\psi\dot\theta\sin\theta}\\\end{pmatrix}
 $$
 
 ## Equation Expanded
