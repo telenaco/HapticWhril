@@ -8,7 +8,7 @@ For a head start, we've provided a fully-realized 3D model, ready for 3D printin
 <iframe width="800" height="450" src="https://myhub.autodesk360.com/ue2901c7f/g/shares/SHd38bfQT1fb47330c99796b3271601d0da5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Library and code can be found https://github.com/telenaco/Teensy-Gyro
+<p>Check out our project on GitHub: <a href="https://github.com/telenaco/Teensy-Gyro" target="_blank">Teensy-Gyro Repository</a></p>
 
 In the following sections, we'll delve deep into the theoretical underpinnings of the device, ensuring you have a robust understanding of the principles that drive its functionality.
 
@@ -37,7 +37,7 @@ The HapticWhirl device operates through the actuation of a flywheel and a gimbal
 <p align="center">
     <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled.png" width="560" alt="Momentum Wheel">
     <br>
-    <em>(a) Momentum Wheel</em>
+    <em>Figure - Momentum Wheel</em>
 </p>
 
 The flywheel's momentum, which is the force that keeps it rotating, always acts perpendicular to its rotation plane. The torque, or the rotational force exerted by the flywheel, can be calculated with this equation:
@@ -53,7 +53,7 @@ This formula shows that the torque is a result of multiplying the flywheel's mom
 <p align="center">
     <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%201.png" width="560" alt="3D model of a steered momentum wheel with labeled parts including the disk and gimbal, showcasing the orientation of applied forces and rotation vectors.">
     <br>
-    <em>(b) Steered Momentum Wheel</em>
+    <em>Figure - Steered Momentum Wheel</em>
 </p>
 
 The steered momentum wheel concept refers to the additional momentum generated when both the disk and the gimbal are moving. This is described by the equation:
