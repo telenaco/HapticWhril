@@ -104,22 +104,14 @@ $$
     <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/GyroFrames.png" width="560" alt="HapticWhirl - GyroFrames">
 </p>
 
-Equation 3 angular velocities $\omega$: 
+Equation 3 angular velocities $$\omega$$:
 
-Equation 3 angular velocities \( \omega \)
-
-Equation 3 angular velocities $$\omega$$
-
-Equation 3 angular velocities \$\omega\$
-
-
-
-- $\overrightarrow{\omega}{^{Gimbal}_{A}}$ - refers to the sum angular rotation of both gimbals.
-- $\overrightarrow{\omega}{^{Disk}_{A}}$ - refers to the rotation of the disk and the contribution of both gimbals to the speed of the disk.
+- $$\overrightarrow{\omega}{^{Gimbal}_{A}}$$ - refers to the sum angular rotation of both gimbals.
+- $$\overrightarrow{\omega}{^{Disk}_{A}}$$ - refers to the rotation of the disk and the contribution of both gimbals to the speed of the disk.
 
 We decompose the equation from right to left, starting with the angular velocity of the disk in frame A.
 
-## Angular Velocity Disk($\overrightarrow{\omega}{^{Disk}_{A}}$ )
+## Angular Velocity Disk($$\overrightarrow{\omega}{^{Disk}_{A}}$$ )
 
 This is the sum of the angular velocity of the disk and the contribution to it of the two gimbals in frame A:  
 
@@ -141,11 +133,15 @@ $$
 (R_{C \rightarrow A} \ \cdot \overrightarrow{\omega}{^{outer}_{C}})  
 $$
 
-Disk and inner gimbal share the same coordinate frame hence  $A = B$.  Hence the rotation matrix $R_{B \rightarrow A}$ is an identity matrix. The rotation matrix $R_{C\rightarrow A}$  rotates over the Y-axis. 
+Disk and inner gimbal share the same coordinate frame hence  $$A = B$$.  Hence the rotation matrix $$R_{B \rightarrow A}$$ is an identity matrix. The rotation matrix $$R_{C\rightarrow A}$$  rotates over the Y-axis. 
 
-![HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%202.png](HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%202.png)
+<p align="center">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%202.png" width="560" alt="HapticWhirl Image">
+</p>
 
-![HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%203.png](HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%203.png)
+<p align="center">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%203.png" width="560" alt="HapticWhirl Image 3">
+</p>
 
 The rotation matrix $R_{A \rightarrow B}$ is a rotation over the Y axis, but since the rotation in this case is $R_{B \rightarrow A}$ we invert it. 
 
