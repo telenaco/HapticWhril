@@ -33,39 +33,35 @@ The actuation of the flywheel and the gimbal creates two moments that result in 
 ### Momentum Wheel
 
 <p align="center">
-<img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled.png" width="560">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled.png" width="560" alt="Momentum Wheel">
+    <br>
+    <em>(a) Momentum Wheel</em>
 </p>
-
-(a) Momentum wheel
 
 The momentum of the flywheel is perpendicular to the rotation plane of the flywheel. The torque output can be determined using the following equation:
 
 $$
-\tag{1}\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =\mathbf{I}  \frac{d}{dt} \overrightarrow\omega^{disk} = \mathbf{I}  \dot{\overrightarrow{\omega}}{^{disk}_{}}
-$$
-
-$$
-\overrightarrow{\tau} = \frac{d\overrightarrow{L}}{dt} = \mathbf{I} \frac{d}{dt}\overrightarrow{\omega}^{\text{disk}} = \mathbf{I} \dot{\overrightarrow{\omega}}^{\text{disk}}
+\tag{1}\overrightarrow{\tau} = \frac{d\overrightarrow{L}}{dt} = \mathbf{I} \frac{d}{dt}\overrightarrow{\omega}^{\text{disk}} = \mathbf{I} \dot{\overrightarrow{\omega}}^{\text{disk}}
 $$
 
 This equation indicates that the torque output is the product of the flywheel's moment of inertia and the rate of change of its angular velocity.
 
-
-## Need to edit from here forward 
-
 ### Steered Momentum Wheel
 
 <p align="center">
-    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%201.png" width="560" alt="(b) Steered momentum wheel">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%201.png" width="560" alt="3D model of a steered momentum wheel with labeled parts including the disk and gimbal, showcasing the orientation of applied forces and rotation vectors.">
+    <br>
+    <em>(b) Steered Momentum Wheel</em>
 </p>
-
-
-(b) Steered momentum wheel
 
 The steered momentum wheel refers to the output momentum generated when the gimbal axis is also actuated. 
 
 $$
 \tag{2}\overrightarrow{\tau}= \frac{d \overrightarrow L}{dt} =  \overrightarrow\omega^{gimbal} \times \mathbf{I} \overrightarrow\omega^{disk} 
+$$
+
+$$
+\tag{2}\overrightarrow{\tau}= \frac{d \overrightarrow{L}}{dt} =  \overrightarrow{\omega}^{gimbal} \times \mathbf{I} \overrightarrow{\omega}^{disk}
 $$
 
 The combination of equations 1. and 2. describes the momentum caused by the disk in its frame of reference (A), considering both the angular acceleration of the disk and the cross product of the gimbal's angular velocity with the disk's angular momentum. 
@@ -77,6 +73,15 @@ $$
 \overrightarrow{\omega}{^{Gimbal}_{A}} \times 
 ({\bf{I}} \cdot 
 {\overrightarrow{\omega}}{^{Disk}_{A}}) }
+$$
+
+$$
+\tag{3} \overrightarrow{\mathbf{M}}^{gyro}_A =
+\mathbf{I} \cdot
+\dot{\overrightarrow{\omega}}^{Disk}_A +
+\overrightarrow{\omega}^{Gimbal}_A \times 
+(\mathbf{I} \cdot 
+\overrightarrow{\omega}^{Disk}_A)
 $$
 
 ## Variables definition
