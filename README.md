@@ -8,6 +8,8 @@ For a head start, we've provided a fully-realized 3D model, ready for 3D printin
 <iframe width="800" height="450" src="https://myhub.autodesk360.com/ue2901c7f/g/shares/SHd38bfQT1fb47330c99796b3271601d0da5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+Library and code can be found https://github.com/telenaco/Teensy-Gyro
+
 In the following sections, we'll delve deep into the theoretical underpinnings of the device, ensuring you have a robust understanding of the principles that drive its functionality.
 
 # Understanding the Theory
@@ -223,48 +225,111 @@ $$
 
 ## Equation Expanded
 
-We can expand equation 1 as follow: 
+The equation for the gyroscopic torque can be expanded by considering the inertial properties of the disk and the angular velocities involved. We apply the inertia tensor to the angular acceleration vector, then add the cross product of the angular velocity vector and the angular momentum vector. This approach takes into account the non-commutative nature of the cross product and matrix multiplication in rotational dynamics. The expanded form of equation (1) is as follows:
 
 $$
-\tag{8}\overrightarrow{\bf {M}}{^{gyro}_{A}} = \begin{pmatrix}\frac{1}{4}MR^2&0&0\\0&\frac{1}{4}MR^2&0\\0&0&\frac{1}{2}MR^2\\\end{pmatrix}\cdot\begin{pmatrix}{-\ddot\psi\sin\theta}-{\dot\psi\dot\theta\cos\theta}\\\ddot\theta\\ {\ddot\rho +\ddot\psi\cos\theta}-{\dot\psi\dot\theta\sin\theta}\\\end{pmatrix}+\\\begin{pmatrix}  {-\dot\psi\sin\theta} \\ \dot\theta\\  {\dot\psi\cos\theta} \\\end{pmatrix}\times \left(\begin{pmatrix}\frac{1}{4}MR^2&0&0\\0&\frac{1}{4}MR^2&0\\0&0&\frac{1}{2}MR^2\\\end{pmatrix}\cdot\begin{pmatrix}{-\dot\psi\sin\theta}\\\dot\theta\\ {\dot\rho +\dot\psi\cos\theta}\\\end{pmatrix}\right)
+\tag{8}\overrightarrow{\mathbf{M}}^{gyro}_{A} = 
+\begin{pmatrix}
+\frac{1}{4}MR^2 & 0 & 0 \\
+0 & \frac{1}{4}MR^2 & 0 \\
+0 & 0 & \frac{1}{2}MR^2
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+-\ddot\psi\sin\theta - \dot\psi\dot\theta\cos\theta \\
+\ddot\theta \\
+\ddot\rho + \ddot\psi\cos\theta - \dot\psi\dot\theta\sin\theta
+\end{pmatrix}
++
+\begin{pmatrix}
+-\dot\psi\sin\theta \\
+\dot\theta \\
+\dot\psi\cos\theta
+\end{pmatrix}
+\times
+\left(
+\begin{pmatrix}
+\frac{1}{4}MR^2 & 0 & 0 \\
+0 & \frac{1}{4}MR^2 & 0 \\
+0 & 0 & \frac{1}{2}MR^2
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+-\dot\psi\sin\theta \\
+\dot\theta \\
+\dot\rho + \dot\psi\cos\theta
+\end{pmatrix}
+\right)
 $$
 
-We can combine the member of both sides of the equation, for that we first group the different equations to do it on three steeps: 
+We can combine the members of the equation by  grouping the different equations to solve in three steps:
 
-![HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%204.png](HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%204.png)
+<p align="center">
+    <img src="HapticWhirl%20-%20Solving%20the%20forward%20and%20inverse%20kine%2030407d04ef9245b59da65be26bc4665f/Untitled%204.png" width="300" alt="Diagram showing the groupings of gyroscopic torque equations with labeled components for clearer step-by-step calculation in the HapticWhirl project.">
+    <br>
+    <em>Figure: Gyroscopic torque equation groupings in the HapticWhirl project</em>
+</p>
 
- First we replace the diagonal values in $I$  with $I_x , I_y \text{ and } I_z$ , where $I_x = I_y$ . 
+First we replace the diagonal values in $$I$$  with $$I_x , I_y \text{ and } I_z$$ , where $$I_x = I_y$$ . 
 
 $$
-{\bf{I_x}}= {\bf{I_y}} =  \frac{1}{4}MR^2  \qquad
-{\bf{I_z}}= \frac{1}{2}MR^2
-
+\mathbf{I_x} = \mathbf{I_y} = \frac{1}{4}MR^2  \qquad
+\mathbf{I_z} = \frac{1}{2}MR^2
 $$
 
 Solving group 1: 
 
 $$
 \begin{pmatrix}
-{\bf{I_x}}\left({-\ddot\psi\sin\theta}-{\dot\psi\dot\theta\cos\theta}\right) \\
-{\bf{I_x}}\ddot\theta \\ 
-{\bf{I_z}}\left({\ddot\rho +\ddot\psi\cos\theta}-{\dot\psi\dot\theta\sin\theta}\right) \\
+\mathbf{I_x} \left( -\ddot\psi \sin\theta - \dot\psi \dot\theta \cos\theta \right) \\
+\mathbf{I_x} \ddot\theta \\ 
+\mathbf{I_z} \left( \ddot\rho + \ddot\psi \cos\theta - \dot\psi \dot\theta \sin\theta \right) \\
 \end{pmatrix}
 $$
 
-Solving group 2 :
+Solving group 2:
 
 $$
-\begin{pmatrix}{\bf{I_x}}\left({-\dot\psi\sin\theta}\right)\\{\bf{I_x}}\dot\theta\\ {\bf{I_z}}\left({\dot\rho +\dot\psi\cos\theta}\right)\\\end{pmatrix}
+\begin{pmatrix}
+\mathbf{I_x} \left( -\dot\psi \sin\theta \right) \\
+\mathbf{I_x} \dot\theta \\
+\mathbf{I_z} \left( \dot\rho + \dot\psi \cos\theta \right) \\
+\end{pmatrix}
 $$
 
-Solving group 3: 
+Solving group 3:
 
 $$
-\begin{pmatrix}  {-\dot\psi\sin\theta} \\ \dot\theta\\  {\dot\psi\cos\theta} \\\end{pmatrix} \times \begin{pmatrix}{\bf{I_x}}\left({-\dot\psi\sin\theta}\right)\\{\bf{I_x}}\dot\theta\\ {\bf{I_z}}\left({\dot\rho +\dot\psi\cos\theta}\right)\\\end{pmatrix}
+\begin{pmatrix}
+-\dot\psi \sin\theta \\
+\dot\theta \\
+\dot\psi \cos\theta \\
+\end{pmatrix} \times
+\begin{pmatrix}
+\mathbf{I_x} \left( -\dot\psi \sin\theta \right) \\
+\mathbf{I_x} \dot\theta \\
+\mathbf{I_z} \left( \dot\rho + \dot\psi \cos\theta \right) \\
+\end{pmatrix}
+$$
+
+$$
+\begin{vmatrix}
+i & j & k \\
+-\dot\psi \sin \theta & \dot\theta & \dot\psi \cos \theta \\
+\mathbf{I_x}(-\dot\psi \sin \theta) & \mathbf{I_x}\dot\theta & \mathbf{I_z}(\dot\rho + \dot\psi \cos \theta)
+\end{vmatrix} =
 $$
 
 $$
 \begin{pmatrix}i&j&k\\ -\dot\psi \sin \theta &\dot\theta &\dot\psi \cos \theta \\ {\bf{I_x}}\left(-\dot\psi \sin \theta \right)&{\bf{I_{x}}}\dot\theta &{\bf{I_z}}\left(\dot\rho +\dot\psi \cos \theta \right)\end{pmatrix}=
+$$
+
+$$
+\begin{pmatrix}
+\dot\theta \mathbf{I_z}(\dot\rho + \dot\psi \cos \theta) - \dot\psi \cos \theta \mathbf{I_z}(\dot\rho + \dot\psi \cos \theta) \\
+(\dot\psi \cos \theta)(-\mathbf{I_x} \dot\psi \sin \theta) - (\mathbf{I_z}(\dot\rho + \dot\psi \cos \theta)(-\dot\psi \sin \theta)) \\
+-\dot\psi \sin \theta \mathbf{I_x} \dot\theta - \mathbf{I_x}(-\dot\psi \sin \theta) \dot\theta
+\end{pmatrix}
 $$
 
 $$
@@ -274,7 +339,11 @@ $$
 Grouping the terms group 3: 
 
 $$
-\begin{pmatrix}-{\bf{I_x}} \dot\theta \dot\psi \cos\theta +{\bf{I_z}} \dot\theta \dot\psi \cos\theta + {\bf{I_z}} \dot\theta \dot\rho \\- {\bf{I_x}} \dot\psi ^2 \cos  \theta  \sin  \theta  + {\bf{I_z}} \dot\psi ^2 \cos  \theta  \sin  \theta +{\bf{I_z}} \dot\rho  \dot\psi  \sin  \theta \\ {\bf{I_x}} \dot\theta  \dot\psi  \sin  \theta - {\bf{I_x}} \dot\theta  \dot\psi  \sin  \theta    \end{pmatrix}
+\begin{pmatrix}
+-\mathbf{I_x} \dot\theta \dot\psi \cos \theta + \mathbf{I_z} \dot\theta \dot\rho \\
+-\mathbf{I_x} \dot\psi^2 \cos \theta \sin \theta + \mathbf{I_z} \dot\psi^2 \cos \theta \sin \theta + \mathbf{I_z} \dot\rho \dot\psi \sin \theta \\
+0
+\end{pmatrix}
 $$
 
 At this point is obvious that can simplify $$Z$$ component:
