@@ -105,7 +105,13 @@ $$
 </p>
 
 Equation 3 angular velocities $\omega$: 
+
 Equation 3 angular velocities \( \omega \)
+
+Equation 3 angular velocities $$\omega$$
+
+Equation 3 angular velocities \$\omega\$
+
 
 
 - $\overrightarrow{\omega}{^{Gimbal}_{A}}$ - refers to the sum angular rotation of both gimbals.
