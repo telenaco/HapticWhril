@@ -441,15 +441,24 @@ $$
 \overrightarrow{\bf {M}}^{gyro}_{Ax} = \frac{1}{4} {\bf{I}} (2 \dot\theta \dot\rho -\ddot\psi \sin \theta )
 $$
 
-Rearranging to solve for $$\ddot\psi$$:
+1. Rearranging to solve for $$\ddot\psi$$:
 
-$$
-2\dot\theta \dot\rho - \ddot\psi\sin\theta = \frac{4\overrightarrow{\bf {M}}^{gyro}_{Ax}}{{\bf{I}}}
-$$
+   $$
+   2\dot\theta \dot\rho - \ddot\psi\sin\theta = \frac{4\overrightarrow{\bf {M}}^{gyro}_{Ax}}{{\bf{I}}}
+   $$
 
-$$-\ddot\psi\sin\theta = \frac{4\overrightarrow{\bf {M}}^{gyro}_{Ax}}{{\bf{I}}} - 2\dot\theta\dot\rho$$
+2. The next step:
 
-$$\ddot\psi = \frac{2\dot\theta\dot\rho}{\sin\theta} - \frac{4\overrightarrow{\bf {M}}^{gyro}_{Ax}}{{\bf{I}}\sin\theta}$$
+   $$
+   -\ddot\psi\sin\theta = \frac{4\overrightarrow{\bf {M}}^{gyro}_{Ax}}{{\bf{I}}} - 2\dot\theta\dot\rho
+   $$
+
+3. And finally solving for $$\ddot\psi$$:
+
+   $$
+   \ddot\psi = \frac{2\dot\theta\dot\rho}{\sin\theta} - \frac{4\overrightarrow{\bf {M}}^{gyro}_{Ax}}{{\bf{I}}\sin\theta}
+   $$
+
 
 Using the Z component
 
