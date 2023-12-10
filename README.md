@@ -423,12 +423,6 @@ $$
 \tag{10} R_{A \rightarrow D} =  \begin{pmatrix}\cos\theta\cos\psi & -\sin\psi  &\sin\theta\cos\psi\\\cos\theta\sin\psi  & \cos\psi  &\sin\theta\sin\psi\\-\sin\theta&0&\cos\theta\\\end{pmatrix}\\
 $$
 
-However, when we measure using the ATI sensor, we get an inverted value of Z. To correct the model to match the readings, we change the sign of the Z component in the rotation matrix:
-
-$$
-R_{A\rightarrow C} =\begin{pmatrix}\color{red}\cos\theta & 0  & \color{blue}\sin\theta\\\color{red} 0  & 1 &\color{blue}0\\\color{red}-\sin\theta&0&\color{blue}-\cos\theta\\\end{pmatrix}\\
-$$
-
 Finally, the torque applied on the handle is computed by combining the results from equations (7) and (8) as follows:
 
 $$
@@ -444,20 +438,18 @@ If we have a given torque and we want to replicate this on the controller we sol
 Yaw acceleration is part of the $$X \text{ and } Z$$  axis. We solve first using the $$X$$component: 
 
 $$
-\overrightarrow{\bf {M}}{^{gyro}_{Ax}} = \frac{1}{4} {\bf{I}} (2 \dot\theta \dot\rho -\ddot\psi \sin \theta )
+\overrightarrow{\bf {M}}^{gyro}_{Ax} = \frac{1}{4} {\bf{I}} (2 \dot\theta \dot\rho -\ddot\psi \sin \theta )
 $$
 
-$$
-2\dot\theta \dot\rho - \ddot\psi\sin\theta =\frac{4\overrightarrow{\bf {M}}{^{gyro}_{Ax}}}{{{\bf{I}} }}
-$$
+Rearranging to solve for $$\ddot\psi$$:
 
 $$
--\ddot\psi\sin\theta =\frac{4\overrightarrow{\bf {M}}{^{gyro}_{Ax}}}{{{\bf{I}} }} -2\dot\theta\dot\rho 
+2\dot\theta \dot\rho - \ddot\psi\sin\theta = \frac{4\overrightarrow{\bf {M}}^{gyro}_{Ax}}{{\bf{I}}}
 $$
 
-$$
-\ddot\psi = \frac{2\dot\theta\dot\rho}{\sin\theta} - \frac{4\overrightarrow{\bf {M}}{^{gyro}_{Ax}}}{{\bf{I}}\sin\theta } 
-$$
+$$-\ddot\psi\sin\theta = \frac{4\overrightarrow{\bf {M}}^{gyro}_{Ax}}{{\bf{I}}} - 2\dot\theta\dot\rho$$
+
+$$\ddot\psi = \frac{2\dot\theta\dot\rho}{\sin\theta} - \frac{4\overrightarrow{\bf {M}}^{gyro}_{Ax}}{{\bf{I}}\sin\theta}$$
 
 Using the Z component
 
