@@ -435,13 +435,13 @@ These describe how quickly the angular velocities are changing. They are directl
 
 ## Solving for $$\ddot\psi$$
 
-We solve first using the \(X\) component: 
+**We solve first using the $$X$$ component:**
 
 $$
 \overrightarrow{\mathbf{M}}^{gyro}_{Ax} = \frac{1}{4} \mathbf{I} (2 \dot\theta \dot\rho - \ddot\psi \sin \theta )
 $$
 
-1. Rearranging to solve for $$\ddot\psi$$:
+Rearranging to solve for $$\ddot\psi$$:
 
 $$
 2 \dot\theta \dot\rho - \ddot\psi \sin \theta = \frac{4 \overrightarrow{\mathbf{M}}^{gyro}_{Ax}}{\mathbf{I}}
@@ -457,19 +457,17 @@ $$
 \ddot\psi = \frac{2 \dot\theta \dot\rho}{\sin \theta} - \frac{4 \overrightarrow{\mathbf{M}}^{gyro}_{Ax}}{\mathbf{I} \sin \theta}
 $$
 
-Using the Z component to solve for $$\ddot\psi$$:
+**Alternatively the $$\text{Z}$$ component also can be used to solve for $$\ddot\psi$$:**
 
 $$
 \overrightarrow{\mathbf{M}}^{gyro}_{Az} = \frac{1}{2} \mathbf{I} \left( \ddot\rho + \ddot\psi \cos \theta - \dot\theta \dot\psi \sin \theta \right)
 $$
 
-Rearrange the equation to isolate the term containing $$\ddot\psi$$:
-
 $$
 \frac{2 \overrightarrow{\mathbf{M}}^{gyro}_{Az}}{\mathbf{I}} = \ddot\rho + \ddot\psi \cos \theta - \dot\theta \dot\psi \sin \theta
 $$
 
-Isolate $$\ddot\psi \cos \theta$$ on one side:
+Isolate $$\ddot\psi$$ on one side:
 
 $$
 \ddot\psi \cos \theta = \frac{2 \overrightarrow{\mathbf{M}}^{gyro}_{Az}}{\mathbf{I}} + \dot\theta \dot\psi \sin \theta - \ddot\rho
