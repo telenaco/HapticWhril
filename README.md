@@ -435,32 +435,31 @@ If we have a given torque and we want to replicate this on the controller we sol
 
 ## Solving for $$\ddot\psi$$
 
-Yaw acceleration is part of the $$X \text{ and } Z$$  axis. We solve first using the $$X$$component: 
+Yaw acceleration is part of the \(X\) and \(Z\) axis. We solve first using the \(X\) component: 
 
 $$
-\overrightarrow{\bf {M}}^{gyro}_{Ax} = \frac{1}{4} {\bf{I}} (2 \dot\theta \dot\rho -\ddot\psi \sin \theta )
+\overrightarrow{\mathbf{M}}^{gyro}_{Ax} = \frac{1}{4} \mathbf{I} (2 \dot\theta \dot\rho - \ddot\psi \sin \theta )
 $$
 
-1. Rearranging to solve for $$\ddot\psi$$:
+1. Rearranging to solve for \(\ddot\psi\):
 
-   $$
-   2\dot\theta \dot\rho - \ddot\psi\sin\theta = \frac{4\overrightarrow{\bf {M}}^{gyro}_{Ax}}{{\bf{I}}}
-   $$
+$$
+2 \dot\theta \dot\rho - \ddot\psi \sin \theta = \frac{4 \overrightarrow{\mathbf{M}}^{gyro}_{Ax}}{\mathbf{I}}
+$$
 
 2. The next step:
 
-   $$
-   -\ddot\psi\sin\theta = \frac{4\overrightarrow{\bf {M}}^{gyro}_{Ax}}{{\bf{I}}} - 2\dot\theta\dot\rho
-   $$
+$$
+-\ddot\psi \sin \theta = \frac{4 \overrightarrow{\mathbf{M}}^{gyro}_{Ax}}{\mathbf{I}} - 2 \dot\theta \dot\rho
+$$
 
-3. And finally solving for $$\ddot\psi$$:
+3. And finally solving for \(\ddot\psi\):
 
-   $$
-   \ddot\psi = \frac{2\dot\theta\dot\rho}{\sin\theta} - \frac{4\overrightarrow{\bf {M}}^{gyro}_{Ax}}{{\bf{I}}\sin\theta}
-   $$
+$$
+\ddot\psi = \frac{2 \dot\theta \dot\rho}{\sin \theta} - \frac{4 \overrightarrow{\mathbf{M}}^{gyro}_{Ax}}{\mathbf{I} \sin \theta}
+$$
 
-
-Using the Z component
+Using the Z component to solve for $$\ddot\psi$$:
 
 $$
 \overrightarrow{\bf {M}}{^{gyro}_{Az}} =\frac{1}{2}{\bf{I}} \left(\ddot\rho +\ddot\psi  \cos  \theta -\dot\theta  \dot\psi  \sin  \theta \right)
