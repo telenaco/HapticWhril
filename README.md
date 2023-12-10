@@ -429,13 +429,13 @@ $$
 \overrightarrow{\mathbf{M}}^{gyro}_{D} =  R_{A \rightarrow D} \cdot \overrightarrow{\mathbf{M}}^{gyro}_{A}
 $$
 
-# Solving for the different moments
+# Solving Angular Accelerations ($$\ddot\theta, \ddot\psi, \ddot\rho $$)
 
-If we have a given torque and we want to replicate this on the controller we solve using the acceleration of the gimbal axis. To solve the for the different variables we usXe equation 9.
+These describe how quickly the angular velocities are changing. They are directly related to the torques applied to the system and are necessary for determining how to change the motion of the system to produce the desired haptic feedback.
 
 ## Solving for $$\ddot\psi$$
 
-Yaw acceleration is part of the \(X\) and \(Z\) axis. We solve first using the \(X\) component: 
+We solve first using the \(X\) component: 
 
 $$
 \overrightarrow{\mathbf{M}}^{gyro}_{Ax} = \frac{1}{4} \mathbf{I} (2 \dot\theta \dot\rho - \ddot\psi \sin \theta )
@@ -464,11 +464,13 @@ $$
 $$
 
 Rearrange the equation to isolate the term containing $$\ddot\psi$$:
+
 $$
 \frac{2 \overrightarrow{\mathbf{M}}^{gyro}_{Az}}{\mathbf{I}} = \ddot\rho + \ddot\psi \cos \theta - \dot\theta \dot\psi \sin \theta
 $$
 
 Isolate $$\ddot\psi \cos \theta$$ on one side:
+
 $$
 \ddot\psi \cos \theta = \frac{2 \overrightarrow{\mathbf{M}}^{gyro}_{Az}}{\mathbf{I}} + \dot\theta \dot\psi \sin \theta - \ddot\rho
 $$
@@ -485,189 +487,15 @@ $$
 \overrightarrow{\mathbf{M}}^{gyro}_{Ay} = \frac{1}{4} \mathbf{I} \left( \dot\psi \sin\theta (\dot\psi \cos \theta + 2 \dot\rho) + \ddot\theta \right)
 $$
 
-Then, rearrange the equation to isolate the term containing \(\ddot\theta\):
+Then, rearrange the equation to isolate the term containing $$\ddot\theta$$:
 
 $$
 \frac{4 \overrightarrow{\mathbf{M}}^{gyro}_{Ay}}{\mathbf{I}} = \dot\psi \sin\theta (\dot\psi \cos \theta + 2 \dot\rho) + \ddot\theta
 $$
 
-Finally, solve for \(\ddot\theta\):
+Finally, solve for $$\ddot\theta$$:
 
 $$
 \ddot\theta = \frac{4 \overrightarrow{\mathbf{M}}^{gyro}_{Ay}}{\mathbf{I}} - \dot\psi \sin\theta (\dot\psi \cos \theta + 2 \dot\rho)
-$$
-
-## Solving for $$\dot\theta$$
-
-Using the X component, we can solve for $$\dot\theta$$ :
-
-$$
-\overrightarrow{\bf {M}}{^{gyro}_{Ax}}={\bf{I}}  \left(\frac{\dot\theta  \dot\rho }{2}-\frac{1}{4} \ddot\psi  (\sin  \theta )\right) 
-$$
-
-$$
-\frac{\overrightarrow{\bf {M}}{^{gyro}_{Ax}}}{{\bf{I}} } = \frac{\dot\theta \dot\rho }{2}-\frac{1}{4} \ddot\psi (\sin \theta )
-$$
-
-$$
-\frac{\overrightarrow{\bf {M}}{^{gyro}_{Ax}}}{{\bf{I}}  } +\frac{1}{4} \ddot\psi  (\sin  \theta ) = \frac{\dot\theta  \dot\rho }{2}
-$$
-
-$$
-\dot\theta = \frac{2\overrightarrow{\bf {M}}{^{gyro}_{Ax}}}{{\bf{I}}\dot\rho  } +\frac{\ddot\psi  (\sin  \theta)}{2\dot\rho}  
-$$
-
-Using the Z component: 
-
-$$
-\overrightarrow{\bf {M}}{^{gyro}_{Az}}=\frac{1}{2} {\bf{I}} (\ddot\rho +\ddot\psi  (\cos  \theta )-\dot\psi  \dot\theta  (\sin  \theta ))
-$$
-
-$$
-\ddot\rho +\ddot\psi  (\cos  \theta )-\dot\psi \dot\theta  (\sin  \theta )=\frac{2 \overrightarrow{\bf {M}}{^{gyro}_{Az}}}{{\bf{I}}}
-$$
-
-$$
-\tag{x}-\dot\psi \dot\theta  (\sin  \theta )=\frac{2 \overrightarrow{\bf {M}}{^{gyro}_{Az}}}{{\bf{I}}} + (-\ddot\rho -\ddot\psi  (\cos  \theta ))
-$$
-
-$$
-\text{Divide }\text{both }\text{sides }\text{by }-\psi  (\theta  \sin ):
-$$
-
-$$
- \dot\theta  = \cot(\theta)-\frac{2 \overrightarrow{\bf {M}}{^{gyro}_{Az}}\csc(\theta)}{{\bf{I}}\dot\psi} + \frac{\ddot\rho \csc(\theta)}{\dot\psi}
-$$
-
-## Solving for $$\dot\psi$$
-
-Using the Y component, we solve for $$\dot\psi$$:
-
-$$
-\ddot\theta +\dot\psi  (\sin  \theta ) (2 \dot\rho +\dot\psi  (\cos  \theta ))=\frac{4 \overrightarrow{\bf {M}}{^{gyro}_{Ay}}}{\bf{I}}
-$$
-
-$$
-\ddot\theta +2 \dot\rho  \dot\psi  (\sin  \theta )+\dot\psi ^2 (\cos  \theta ) (\sin  \theta )=\frac{4 \overrightarrow{\bf {M}}{^{gyro}_{Ay}}}{\bf{I}}
-$$
-
-$$
-\text{divide by } \sin(\theta)\cos(\theta);
-$$
-
-$$
-\\ \dot\psi ^2+2 \dot\rho  \dot\psi  (\sec  \theta )+\ddot\theta  (\csc  \theta ) (\sec  \theta )=\frac{4 \overrightarrow{\bf {M}}{^{gyro}_{Ay}} (\csc \theta) ( \sec\theta )}{{\bf{I}}}
-$$
-
-$$
-\dot\psi ^2+2 \dot\rho  \dot\psi  (\sec  \theta )=\frac{4 \overrightarrow{\bf {M}}{^{gyro}_{Ay}} (\csc  \theta ) (\sec  \theta )}{{{\bf{I}}}}-\ddot\theta  (\csc  \theta ) (\sec  \theta )
-$$
-
-$$
-\text{Add }\rho ^2 \left(\theta  \sec ^2\right) \text{to }\text{both }\text{sides}:
-$$
-
-$$
-\dot\psi ^2+2 \dot\rho  \dot\psi  (\sec  \theta )+\dot\rho ^2 \left(\sec ^2 \theta \right)=\\\frac{4 \overrightarrow{\bf {M}}{^{gyro}_{Ay}} (\csc  \theta ) (\sec  \theta )}{{{{\bf{I}}}}}-\ddot\theta  (\csc  \theta ) (\sec  \theta )+\dot\rho ^2 \left(\sec ^2 \theta \right)
-$$
-
-$$
-(\psi +\rho  (\sec  \theta ))^2 = \frac{4 \overrightarrow{\bf {M}}{^{gyro}_{Ay}} (\csc  \theta ) (\sec  \theta )}{{{{\bf{I}}}}}-\ddot\theta  (\csc  \theta ) (\sec  \theta )+\dot\rho ^2 \left(\sec ^2 \theta \right)
-$$
-
-$$
-\dot\psi +\dot\rho  (\sec  \theta )=\sqrt{\frac{4 \overrightarrow{\bf {M}}{^{gyro}_{Ay}} (\csc  \theta ) (\sec  \theta )}{x}-\ddot\theta  (\csc  \theta ) (\sec  \theta )+\dot\rho ^2 \left(\sec ^2 \theta \right)}
-$$
-
-$$
-\dot\psi =\sqrt{\frac{4 \overrightarrow{\bf {M}}{^{gyro}_{Ay}}  \csc (\theta ) \sec (\theta )}{{\bf{I}}}-\ddot\theta  \csc (\theta ) \sec (\theta )+\dot\rho ^2 \sec (\theta )^2}-\dot\rho  (\sec  \theta ) \qquad \text{ or } \\ \dot\psi =-\dot\rho  (\sec  \theta )-\sqrt{\frac{4 \overrightarrow{\bf {M}}{^{gyro}_{Ay}}  \csc (\theta ) \sec (\theta )}{{\bf{I}}}-\ddot\theta  \csc (\theta ) \sec (\theta )+\dot\rho ^2 \sec (\theta )^2}
-$$
-
-Using the Z component, follow up from equation x:
-
-$$
--\dot\psi \dot\theta  (\sin  \theta )=\frac{2 \overrightarrow{\bf {M}}{^{gyro}_{Az}}}{{\bf{I}}} + (-\ddot\rho -\ddot\psi  (\cos  \theta ))
-$$
-
-$$
-\text{Divide }\text{both }\text{sides }\text{by }-\theta  (\theta  \sin ):
-$$
-
-$$
-\dot\psi =\frac{\ddot\psi  (\cot  \theta )}{\dot\theta }-\frac{2 \overrightarrow{\bf {M}}{^{gyro}_{Az}} (\csc  \theta )}{{\bf{I}} \dot\theta }+\frac{\dot\rho  (\csc  \theta )}{\dot\theta }
-$$
-
-## Solving equation 1
-
-solving on equation 1 for $$\ddot\theta \text{ and } \ddot\psi$$  , solving the $$X$$  component first: 
-
-$$
-m_x ={\bf{I_x}}\left({-\ddot\psi\sin\theta}-{\dot\psi\dot\theta\cos\theta}\right) \\ 
-$$
-
-$$
-\tag{x}\frac{m_x}{{\bf{I_x}}} ={-\ddot\psi\sin\theta}-{\dot\psi\dot\theta\cos\theta}
-$$
-
-$$
-\frac{m_x}{{\bf{I_x}}}+{\dot\psi\dot\theta\cos\theta} ={-\ddot\psi\sin\theta}
-$$
-
-$$
-\tag{x}\ddot\psi={\dot\psi\dot\theta\cot\theta}\frac{m_x\csc\theta}{{\bf{I_x}}}
-$$
-
-Solving for $$\dot\theta \text{ and } \dot\psi$$, we continue from equation x above:
-
-$$
-\frac{m_x}{{\bf{I_x}}}{+\ddot\psi\sin\theta} ={\dot\psi\dot\theta\cos\theta}
-$$
-
-$$
-\dot\psi =\frac{m_x sec\theta}{{\bf{I_x}}\dot\theta}{+\frac{\ddot\psi \tan\theta}{\dot\theta}} 
-$$
-
-$$
-\dot\theta =\frac{m_x sec\theta}{{\bf{I_x}}\dot\psi}{+\frac{\ddot\psi \tan\theta}{\dot\psi}} 
-$$
-
-Solving the $$Y$$ component:
-
-$$
-m_y ={\bf{I_y}}\ddot\theta
-$$
-
-$$
-\ddot\theta = \frac{m_y}{{\bf{I_y}}}
-$$
-
-Solving the $$Z$$  component: 
-
-$$
-m_z = {\bf{I_z}}\left({\ddot\rho +\ddot\psi\cos\theta}-{\dot\psi\dot\theta\sin\theta}\right)
-$$
-
-When the controller is running the disk is rotating at constant speed, hence $$\ddot\rho$$ is zero. Hence:
-
-$$
-\frac{m_z}{{\bf{I_z}}}+\dot\psi\dot\theta\sin\theta = \ddot\psi\cos\theta
-$$
-
-$$
-\ddot\psi = \frac{m_z sec\theta}{{\bf{I_z}}}+\dot\psi\dot\theta\tan\theta
-$$
-
-Solving for $$\dot\theta \text{ and } \dot\psi$$:
-
-$$
-\frac{m_z}{{\bf{I_z}}}-\ddot\psi\cos\theta = \dot\psi\dot\theta\sin\theta 
-$$
-
-$$
-\dot\psi = \frac{\ddot\psi \cot\theta}{\dot\theta} -\frac{m_z \csc\theta}{{\bf{I_z}} \dot\theta}
-$$
-
-$$
-\dot\theta= \frac{\ddot\psi \cot\theta}{\dot\psi} -\frac{m_z \csc\theta}{{\bf{I_z}} \dot\psi}
 $$
 
