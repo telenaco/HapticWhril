@@ -8,9 +8,15 @@ For a head start, we've provided a fully-realized 3D model, ready for 3D printin
 <iframe width="800" height="450" src="https://myhub.autodesk360.com/ue2901c7f/g/shares/SHd38bfQT1fb47330c99796b3271601d0da5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-<p>Check out our project on GitHub: <a href="https://github.com/telenaco/Teensy-Gyro" target="_blank">Teensy-Gyro Repository</a></p>
+<p style="text-align: center;">
+    Check out our project on GitHub: 
+    <a href="https://github.com/telenaco/Teensy-Gyro" target="_blank">
+        <img src="https://github-media-downloads.s3.amazonaws.com/GitHub-Mark-64px.png" alt="GitHub Logo" width="32" height="32">
+        Teensy-Gyro Repository
+    </a>
+</p>
 
-In the following sections, we'll delve deep into the theoretical underpinnings of the device, ensuring you have a robust understanding of the principles that drive its functionality.
+In the following sections, we'll delve deep into the theoretical underpinnings of the device this will be necessary in order to later implement a control loop system that orientates and operates the controller to deliver kinesthetic feedback that matches the action of what is happening on the VR enviroment. 
 
 # Understanding the Theory
 
@@ -78,12 +84,12 @@ $$
 The controller can be divided into the different objects that it is composed of. The correspondent coordinate spaces and position variables are shown in table 1. The origin of all the spaces is located at the centre of the mass of the flywheel. It is worth noting that since the disk is mounted on the inner gimbal the coordinate space A and B are always in the same orientation. The variables used in this tutorial are: 
 
 $$
-\begin{array}{| l | c | c | c |}\hline
-\text{Object}        & \text{Space}   & \text{Angle}     & \\\hline
-\\[-0.5em] disk      & A              & \rho            & \\ \\[-0.5em]\hline
-\\[-0.5em] inner (pitch) & B          & \theta          & \\ \\[-0.5em]\hline
-\\[-0.5em] outer (yaw)   & C          & \psi            & \\ \\[-0.5em]\hline
-\\[-0.5em] handle    & D              &                 & \\ \\[-0.5em]\hline 
+\begin{array}{| l | c | c |}\hline
+\text{Object} & \text{Space} & \text{Angle} \\\hline
+disk & A & \rho \\\hline
+inner (pitch) & B & \theta \\\hline
+outer (yaw) & C & \psi \\\hline
+handle & D & \\\hline
 \end{array}
 $$
 
