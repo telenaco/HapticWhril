@@ -441,19 +441,17 @@ $$
 \overrightarrow{\mathbf{M}}^{gyro}_{Ax} = \frac{1}{4} \mathbf{I} (2 \dot\theta \dot\rho - \ddot\psi \sin \theta )
 $$
 
-1. Rearranging to solve for \(\ddot\psi\):
+1. Rearranging to solve for $$\ddot\psi$$:
 
 $$
 2 \dot\theta \dot\rho - \ddot\psi \sin \theta = \frac{4 \overrightarrow{\mathbf{M}}^{gyro}_{Ax}}{\mathbf{I}}
 $$
 
-2. The next step:
-
 $$
 -\ddot\psi \sin \theta = \frac{4 \overrightarrow{\mathbf{M}}^{gyro}_{Ax}}{\mathbf{I}} - 2 \dot\theta \dot\rho
 $$
 
-3. And finally solving for \(\ddot\psi\):
+And finally solving for $$\ddot\psi$$:
 
 $$
 \ddot\psi = \frac{2 \dot\theta \dot\rho}{\sin \theta} - \frac{4 \overrightarrow{\mathbf{M}}^{gyro}_{Ax}}{\mathbf{I} \sin \theta}
@@ -462,37 +460,41 @@ $$
 Using the Z component to solve for $$\ddot\psi$$:
 
 $$
-\overrightarrow{\bf {M}}{^{gyro}_{Az}} =\frac{1}{2}{\bf{I}} \left(\ddot\rho +\ddot\psi  \cos  \theta -\dot\theta  \dot\psi  \sin  \theta \right)
+\overrightarrow{\mathbf{M}}^{gyro}_{Az} = \frac{1}{2} \mathbf{I} \left( \ddot\rho + \ddot\psi \cos \theta - \dot\theta \dot\psi \sin \theta \right)
+$$
+
+Rearrange the equation to isolate the term containing $$\ddot\psi$$:
+$$
+\frac{2 \overrightarrow{\mathbf{M}}^{gyro}_{Az}}{\mathbf{I}} = \ddot\rho + \ddot\psi \cos \theta - \dot\theta \dot\psi \sin \theta
+$$
+
+Isolate $$\ddot\psi \cos \theta$$ on one side:
+$$
+\ddot\psi \cos \theta = \frac{2 \overrightarrow{\mathbf{M}}^{gyro}_{Az}}{\mathbf{I}} + \dot\theta \dot\psi \sin \theta - \ddot\rho
 $$
 
 $$
-\frac{2 \overrightarrow{\bf {M}}{^{gyro}_{Az}} }{{\bf{I}}} = \ddot\rho +\ddot\psi  \cos  \theta -\dot\theta  \dot\psi  \sin  \theta 
-$$
-
-$$
-- \ddot\rho +\frac{2 \overrightarrow{\bf {M}}{^{gyro}_{Az}} }{{\bf{I}}} +\dot\theta  \dot\psi  \sin  \theta  = \ddot\psi  \cos  \theta 
-$$
-
-$$
-\ddot\psi =\frac{2 \overrightarrow{\bf {M}}{^{gyro}_{Az}} }{{\bf{I}}\cos  \theta }-\frac{\ddot\rho}{\cos  \theta }  +\dot\theta  \dot\psi  \tan  \theta 
+\ddot\psi = \frac{2 \overrightarrow{\mathbf{M}}^{gyro}_{Az}}{\mathbf{I} \cos \theta} - \frac{\ddot\rho}{\cos \theta} - \dot\theta \dot\psi \tan \theta
 $$
 
 ## Solving for $$\ddot\theta$$
 
-$$
-\frac{1}{4} {\bf{I}} (\ddot\theta +\dot\psi  \sin \theta  (2 \dot\rho +\dot\psi  \cos \theta ))
-$$
+We start with the gyroscopic moment on the Y-axis:
 
 $$
-\overrightarrow{\bf {M}}{^{gyro}_{Ay}}=\frac{1}{4}{\bf{I}} \left(\dot\psi   \sin\theta  (\dot\psi  \cos \theta +2 \dot\rho )+\ddot\theta \right)
+\overrightarrow{\mathbf{M}}^{gyro}_{Ay} = \frac{1}{4} \mathbf{I} \left( \dot\psi \sin\theta (\dot\psi \cos \theta + 2 \dot\rho) + \ddot\theta \right)
 $$
 
-$$
-\frac{4\overrightarrow{\bf {M}}{^{gyro}_{Ay}}}{{\bf{I}}}=\dot\psi   \sin\theta  (\dot\psi  \cos \theta +2 \dot\rho )+\ddot\theta 
-$$
+Then, rearrange the equation to isolate the term containing \(\ddot\theta\):
 
 $$
-\ddot\theta = \frac{4\overrightarrow{\bf {M}}{^{gyro}_{Ay}}}{{\bf{I}}} -\dot\psi   \sin\theta  (\dot\psi  \cos \theta +2 \dot\rho )
+\frac{4 \overrightarrow{\mathbf{M}}^{gyro}_{Ay}}{\mathbf{I}} = \dot\psi \sin\theta (\dot\psi \cos \theta + 2 \dot\rho) + \ddot\theta
+$$
+
+Finally, solve for \(\ddot\theta\):
+
+$$
+\ddot\theta = \frac{4 \overrightarrow{\mathbf{M}}^{gyro}_{Ay}}{\mathbf{I}} - \dot\psi \sin\theta (\dot\psi \cos \theta + 2 \dot\rho)
 $$
 
 ## Solving for $$\dot\theta$$
