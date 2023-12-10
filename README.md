@@ -1,6 +1,6 @@
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-Welcome to this guide for constructing and operating a kinesthetic haptic controller that harnesses the dynamic properties of a flywheel with dual axes of rotation. This page serves as a one-stop resource, offering all the essential files, codes, and  instructions necessary to create your own gyroscope-based haptic device.
+Welcome to this guide for constructing and operating a kinesthetic haptic controller that harnesses the dynamic properties of a flywheel with dual axes of rotation. This page serves as a one-stop resource, offering all the essential files, codes, and  instructions necessary to create your own gyroscope-based haptic device, this page will be updated over time with the further develpments so please an eye for the new versions.
 
 For a head start, we've provided a fully-realized 3D model, ready for 3D printing, accessible via the Fusion website. You can explore the model in detail through the embedded frame below or download it from the dropdown menu:
 
